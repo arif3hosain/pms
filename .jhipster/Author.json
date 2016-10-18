@@ -1,0 +1,34 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "127"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "dateOfBirth",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20150915052646",
+    "dto": "no",
+    "pagination": "pagination"
+}

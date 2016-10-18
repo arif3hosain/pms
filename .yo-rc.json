@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "pms",
+    "packageName": "com.pms",
+    "packageFolder": "com/pms",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "oracle",
+    "searchEngine": "elasticsearch",
+    "useSass": true,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "enableTranslation": false,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "9080234b9117184c3fe661ddf0cd780b845f2d7c",
+    "testFrameworks": [
+      "gatling"
+    ]
+  }
+}
