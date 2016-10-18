@@ -1,0 +1,84 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myUmsRoleMstLabel">Create or edit a UmsRoleMst</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="umsRoleMst.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_roleName">RoleName</label>
+            <input type="text" class="form-control" name="roleName" id="field_roleName"
+                    ng-model="umsRoleMst.roleName"
+                    required />
+            <div ng-show="editForm.roleName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.roleName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_roleDesc">RoleDesc</label>
+            <input type="text" class="form-control" name="roleDesc" id="field_roleDesc"
+                    ng-model="umsRoleMst.roleDesc"
+                    required />
+            <div ng-show="editForm.roleDesc.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.roleDesc.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <input type="number" class="form-control" name="status" id="field_status"
+                    ng-model="umsRoleMst.status"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_createdDate">CreatedDate</label>
+            <input id="field_createdDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="umsRoleMst.createdDate" is-open="datePickerForCreatedDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForCreatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_updatedDate">UpdatedDate</label>
+            <input id="field_updatedDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="umsRoleMst.updatedDate" is-open="datePickerForUpdatedDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForUpdatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_createdBy">CreatedBy</label>
+            <input type="number" class="form-control" name="createdBy" id="field_createdBy"
+                    ng-model="umsRoleMst.createdBy"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_updatedBy">UpdatedBy</label>
+            <input type="number" class="form-control" name="updatedBy" id="field_updatedBy"
+                    ng-model="umsRoleMst.updatedBy"
+                     />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

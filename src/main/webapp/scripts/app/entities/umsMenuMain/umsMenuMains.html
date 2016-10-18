@@ -1,0 +1,86 @@
+<div>
+    <h2>UmsMenuMains</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="umsMenuMain.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new UmsMenuMain</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a UmsMenuMain</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="menuName"><span>MenuName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="menuType"><span>MenuType</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="RunFileName"><span>RunFileName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="MenuSl"><span>MenuSl</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ParentId"><span>ParentId</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="homeDir"><span>HomeDir</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="remarks"><span>Remarks</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="menuLevel"><span>MenuLevel</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="prevIconLevel"><span>PrevIconLevel</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span>CreatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updatedDate"><span>UpdatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdBy"><span>CreatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updatedBy"><span>UpdatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="umsMenuMain in umsMenuMains track by umsMenuMain.id">
+                    <td><a ui-sref="umsMenuMain.detail({id:umsMenuMain.id})">{{umsMenuMain.id}}</a></td>
+                    <td>{{umsMenuMain.menuName}}</td>
+                    <td>{{umsMenuMain.menuType}}</td>
+                    <td>{{umsMenuMain.RunFileName}}</td>
+                    <td>{{umsMenuMain.MenuSl}}</td>
+                    <td>{{umsMenuMain.ParentId}}</td>
+                    <td>{{umsMenuMain.homeDir}}</td>
+                    <td>{{umsMenuMain.remarks}}</td>
+                    <td>{{umsMenuMain.menuLevel}}</td>
+                    <td>{{umsMenuMain.prevIconLevel}}</td>
+                    <td>{{umsMenuMain.status}}</td>
+                        <td>{{umsMenuMain.createdDate | date:'mediumDate'}}</td>
+                        <td>{{umsMenuMain.updatedDate | date:'mediumDate'}}</td>
+                    <td>{{umsMenuMain.createdBy}}</td>
+                    <td>{{umsMenuMain.updatedBy}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="umsMenuMain.detail({id:umsMenuMain.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="umsMenuMain.edit({id:umsMenuMain.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="umsMenuMain.delete({id:umsMenuMain.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

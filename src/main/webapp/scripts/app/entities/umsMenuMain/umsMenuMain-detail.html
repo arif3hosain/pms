@@ -1,0 +1,135 @@
+
+<div>
+    <h2><span>UmsMenuMain</span> {{umsMenuMain.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>MenuName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.menuName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>MenuType</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.menuType}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>RunFileName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.RunFileName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>MenuSl</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.MenuSl}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ParentId</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.ParentId}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>HomeDir</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.homeDir}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Remarks</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.remarks}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>MenuLevel</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.menuLevel}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>PrevIconLevel</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.prevIconLevel}}</span>
+                    <div>{{umsMenuMain.prevIconLevelContentType}}  {{byteSize(umsMenuMain.prevIconLevel)}}</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CreatedDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.createdDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>UpdatedDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.updatedDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CreatedBy</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.createdBy}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>UpdatedBy</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{umsMenuMain.updatedBy}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

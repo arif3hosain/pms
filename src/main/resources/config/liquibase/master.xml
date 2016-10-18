@@ -6,5 +6,9 @@
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150915052646_added_entity_Author.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161018052646_added_entity_SetupCompany.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161017052646_added_entity_UmsMenuMain.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161017052646_added_entity_UmsRoleMst.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150916053822_added_entity_Book.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
 </databaseChangeLog>

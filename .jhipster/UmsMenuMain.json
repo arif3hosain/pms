@@ -1,0 +1,85 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "menuName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "menuType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "RunFileName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "MenuSl",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "ParentId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "homeDir",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "remarks",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "menuLevel",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "prevIconLevel",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "IconImage"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "updatedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "createdBy",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "updatedBy",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20161017052646",
+    "dto": "no",
+    "pagination": "pagination"
+}

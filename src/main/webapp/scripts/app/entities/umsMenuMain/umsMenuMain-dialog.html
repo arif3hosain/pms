@@ -1,0 +1,142 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myUmsMenuMainLabel">Create or edit a UmsMenuMain</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="umsMenuMain.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_menuName">MenuName</label>
+            <input type="text" class="form-control" name="menuName" id="field_menuName"
+                    ng-model="umsMenuMain.menuName"
+                    required />
+            <div ng-show="editForm.menuName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.menuName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_menuType">MenuType</label>
+            <input type="text" class="form-control" name="menuType" id="field_menuType"
+                    ng-model="umsMenuMain.menuType"
+                    required />
+            <div ng-show="editForm.menuType.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.menuType.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_RunFileName">RunFileName</label>
+            <input type="text" class="form-control" name="RunFileName" id="field_RunFileName"
+                    ng-model="umsMenuMain.RunFileName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_MenuSl">MenuSl</label>
+            <input type="number" class="form-control" name="MenuSl" id="field_MenuSl"
+                    ng-model="umsMenuMain.MenuSl"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_ParentId">ParentId</label>
+            <input type="number" class="form-control" name="ParentId" id="field_ParentId"
+                    ng-model="umsMenuMain.ParentId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_homeDir">HomeDir</label>
+            <input type="text" class="form-control" name="homeDir" id="field_homeDir"
+                    ng-model="umsMenuMain.homeDir"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_remarks">Remarks</label>
+            <input type="text" class="form-control" name="remarks" id="field_remarks"
+                    ng-model="umsMenuMain.remarks"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_menuLevel">MenuLevel</label>
+            <input type="number" class="form-control" name="menuLevel" id="field_menuLevel"
+                    ng-model="umsMenuMain.menuLevel"
+                     />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="setPrevIconLevel($file, umsMenuMain)">
+            <label class="control-label" for="field_prevIconLevel">PrevIconLevel</label>
+            <div>
+                <div class="help-block clearfix">
+                    <span class="pull-left">{{umsMenuMain.prevIconLevelContentType}} {{byteSize(umsMenuMain.prevIconLevel)}}</span>
+                    <button ng-click="umsMenuMain.prevIconLevel=null;umsMenuMain.prevIconLevelContentType=null;"
+                            ng-if="umsMenuMain.prevIconLevel"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="setPrevIconLevel($file, umsMenuMain)">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="prevIconLevel" id="field_prevIconLevel"
+                    ng-model="umsMenuMain.prevIconLevel"
+                     />
+            <input type="hidden" class="form-control" name="prevIconLevelContentType" id="field_prevIconLevelContentType"
+                    ng-model="umsMenuMain.prevIconLevelContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <input type="number" class="form-control" name="status" id="field_status"
+                    ng-model="umsMenuMain.status"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_createdDate">CreatedDate</label>
+            <input id="field_createdDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="umsMenuMain.createdDate" is-open="datePickerForCreatedDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForCreatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_updatedDate">UpdatedDate</label>
+            <input id="field_updatedDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="umsMenuMain.updatedDate" is-open="datePickerForUpdatedDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForUpdatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_createdBy">CreatedBy</label>
+            <input type="number" class="form-control" name="createdBy" id="field_createdBy"
+                    ng-model="umsMenuMain.createdBy"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_updatedBy">UpdatedBy</label>
+            <input type="number" class="form-control" name="updatedBy" id="field_updatedBy"
+                    ng-model="umsMenuMain.updatedBy"
+                     />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

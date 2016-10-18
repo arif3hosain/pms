@@ -1,0 +1,114 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "companyCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "add1",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "add2",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "phone1",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "phone2",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "fax",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "vatno1",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "web",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "tin",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "csymbol",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "secuse",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "bcsymbol",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "cfname",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 17,
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 18,
+            "fieldName": "updatedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 19,
+            "fieldName": "createdBy",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 20,
+            "fieldName": "updatedBy",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20161018052646",
+    "dto": "no",
+    "pagination": "pagination"
+}
