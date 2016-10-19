@@ -8,13 +8,13 @@
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
+        <!--<div class="form-group">-->
+            <!--<label for="id">ID</label>-->
+            <!--<input type="text" class="form-control" id="id" name="id"-->
+                    <!--ng-model="setupCompany.id" readonly />-->
+        <!--</div>-->
         <div class="form-group">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="setupCompany.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_companyCode">CompanyCode</label>
+            <label class="control-label" for="field_companyCode">Company Code</label>
             <input type="text" class="form-control" name="companyCode" id="field_companyCode"
                     ng-model="setupCompany.companyCode"
                     required />
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_name">Name</label>
+            <label class="control-label" for="field_name">Company Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                     ng-model="setupCompany.name"
                     required />
@@ -38,25 +38,25 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_add1">Add1</label>
+            <label class="control-label" for="field_add1">Address 1</label>
             <input type="text" class="form-control" name="add1" id="field_add1"
                     ng-model="setupCompany.add1"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_add2">Add2</label>
+            <label class="control-label" for="field_add2">Address 2</label>
             <input type="text" class="form-control" name="add2" id="field_add2"
                     ng-model="setupCompany.add2"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_phone1">Phone1</label>
+            <label class="control-label" for="field_phone1">Phone Number</label>
             <input type="text" class="form-control" name="phone1" id="field_phone1"
                     ng-model="setupCompany.phone1"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_phone2">Phone2</label>
+            <label class="control-label" for="field_phone2">Mobile</label>
             <input type="text" class="form-control" name="phone2" id="field_phone2"
                     ng-model="setupCompany.phone2"
                      />
@@ -74,7 +74,7 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_vatno1">Vatno1</label>
+            <label class="control-label" for="field_vatno1">Vat Number</label>
             <input type="text" class="form-control" name="vatno1" id="field_vatno1"
                     ng-model="setupCompany.vatno1"
                      />
@@ -115,40 +115,40 @@
                     ng-model="setupCompany.cfname"
                      />
         </div>
-        <div class="form-group">
-            <label class="control-label" for="field_status">Status</label>
-            <input type="number" class="form-control" name="status" id="field_status"
-                    ng-model="setupCompany.status"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_createdDate">CreatedDate</label>
-            <input id="field_createdDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupCompany.createdDate" is-open="datePickerForCreatedDate.status.opened"
-            />
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="datePickerForCreatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_updatedDate">UpdatedDate</label>
-            <input id="field_updatedDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupCompany.updatedDate" is-open="datePickerForUpdatedDate.status.opened"
-            />
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="datePickerForUpdatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_createdBy">CreatedBy</label>
-            <input type="number" class="form-control" name="createdBy" id="field_createdBy"
-                    ng-model="setupCompany.createdBy"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_updatedBy">UpdatedBy</label>
-            <input type="number" class="form-control" name="updatedBy" id="field_updatedBy"
-                    ng-model="setupCompany.updatedBy"
-                     />
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_status">Status</label>-->
+            <!--<input type="number" class="form-control" name="status" id="field_status"-->
+                    <!--ng-model="setupCompany.status"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_createdDate">CreatedDate</label>-->
+            <!--<input id="field_createdDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupCompany.createdDate" is-open="datePickerForCreatedDate.status.opened"-->
+            <!--/>-->
+            <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="datePickerForCreatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_updatedDate">UpdatedDate</label>-->
+            <!--<input id="field_updatedDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupCompany.updatedDate" is-open="datePickerForUpdatedDate.status.opened"-->
+            <!--/>-->
+            <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="datePickerForUpdatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_createdBy">CreatedBy</label>-->
+            <!--<input type="number" class="form-control" name="createdBy" id="field_createdBy"-->
+                    <!--ng-model="setupCompany.createdBy"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_updatedBy">UpdatedBy</label>-->
+            <!--<input type="number" class="form-control" name="updatedBy" id="field_updatedBy"-->
+                    <!--ng-model="setupCompany.updatedBy"-->
+                     <!--/>-->
+        <!--</div>-->
 
     </div>
     <div class="modal-footer">

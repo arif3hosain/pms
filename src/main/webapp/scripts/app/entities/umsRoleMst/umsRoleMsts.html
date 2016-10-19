@@ -1,21 +1,20 @@
 <div>
-    <h2>UmsRoleMsts</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="umsRoleMst.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new UmsRoleMst</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span>Add Role</span>
                 </button>
             </div>
             <div class="col-md-8">
-                <form name="searchForm" class="form-inline">
-                    <div class="form-group">
-                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
-                    </div>
-                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a UmsRoleMst</span>
-                    </button>
-                </form>
+                <!--<form name="searchForm" class="form-inline">-->
+                    <!--<div class="form-group">-->
+                        <!--<input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="Search">-->
+                    <!--</div>-->
+                    <!--<button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search</span>-->
+                    <!--</button>-->
+                <!--</form>-->
             </div>
         </div>
     </div>
@@ -25,13 +24,13 @@
             <thead>
                 <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="roleName"><span>RoleName</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="roleDesc"><span>RoleDesc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="roleName"><span>Role Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="roleDesc"><span>Role Description</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="createdDate"><span>CreatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updatedDate"><span>UpdatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="createdBy"><span>CreatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updatedBy"><span>UpdatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span>Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updatedDate"><span>Updated Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdBy"><span>Created By</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updatedBy"><span>Updated By</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -49,17 +48,17 @@
                         <button type="submit"
                                 ui-sref="umsRoleMst.detail({id:umsRoleMst.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>
                         </button>
                         <button type="submit"
                                 ui-sref="umsRoleMst.edit({id:umsRoleMst.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>
                         </button>
                         <button type="submit"
                                 ui-sref="umsRoleMst.delete({id:umsRoleMst.id})"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>
                         </button>
                     </td>
                 </tr>
@@ -67,6 +66,6 @@
         </table>
     </div>
     <div class="text-center">
-        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+        <!--<uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>-->
     </div>
 </div>
