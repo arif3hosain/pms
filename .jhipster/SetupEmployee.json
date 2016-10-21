@@ -1,0 +1,151 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide":true
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "setupCompany",
+            "otherEntityName": "setupCompany",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "empCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "employeeTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "employeeName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "joiningDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "stdWorkingHour",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "overTime",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "tinNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "deptId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "applicationId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "profilePicture",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "superiorId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "degCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "employeeType",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "bloodGroup",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "phone",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "address",
+            "fieldType": "String",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldId": 17,
+            "fieldName": "hourlyRate",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 18,
+            "fieldName": "fixedSalary",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 19,
+            "fieldName": "dateOfBirth",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 20,
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 21,
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 22,
+            "fieldName": "updatedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 23,
+            "fieldName": "createdBy",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 24,
+            "fieldName": "updatedBy",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20161021052100",
+    "dto": "no",
+    "pagination": "pagination"
+}

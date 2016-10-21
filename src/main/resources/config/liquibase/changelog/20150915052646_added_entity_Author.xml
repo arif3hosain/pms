@@ -29,6 +29,5 @@
             <column name="photo_content_type" type="varchar(50)"/>
             <column name="date_of_birth" type="date"/>
         </createTable>
-        
     </changeSet>
 </databaseChangeLog>

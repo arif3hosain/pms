@@ -1,0 +1,231 @@
+
+<div>
+    <!--<h2><span>SetupEmployee</span> {{setupEmployee.id}}</h2>-->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Employee Code</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.empCode}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Employee Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.employeeTitle}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Employee Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.employeeName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Joining Date</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.joiningDate | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Working Hour</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.stdWorkingHour}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Over Time</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.overTime}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Tin Number</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.tinNo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Department ID</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.deptId}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Application ID</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.applicationId}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Profile Picture</span>
+                </td>
+                <td>
+                    <img data-ng-src="{{'data:' + setupEmployee.profilePictureContentType + ';base64,' + setupEmployee.profilePicture}}" style="max-width: 100%;" ng-if="setupEmployee.profilePicture"/>
+                    <div>{{setupEmployee.profilePictureContentType}}  {{byteSize(setupEmployee.profilePicture)}}</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Superior ID</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.superiorId}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Designation Code</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.degCode}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Employee Type</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.employeeType}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Blood Group</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.bloodGroup}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Phone</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.phone}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Address</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.address}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Hourly Rate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.hourlyRate}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Fixed Salary</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.fixedSalary}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Date Of Birth</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupEmployee.dateOfBirth | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>Status</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupEmployee.status}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>CreatedDate</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupEmployee.createdDate | date:'mediumDate'}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>UpdatedDate</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupEmployee.updatedDate | date:'mediumDate'}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>CreatedBy</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupEmployee.createdBy}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>UpdatedBy</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupEmployee.updatedBy}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <tr>
+                <td>
+                    <span>user</span>
+                </td>
+                <td>
+                    {{setupEmployee.user.login}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>setupCompany</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="setupCompany.detail({id:setupEmployee.setupCompany.id})">{{setupEmployee.setupCompany.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

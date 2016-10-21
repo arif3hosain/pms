@@ -10,6 +10,9 @@ angular.module('pmsApp').controller('UmsMenuMainDialogController',
                 $scope.umsMenuMain = result;
             });
         };
+        $scope.menus=UmsMenuMain.query({size:100});
+        console.log($scope.menus);
+
 
         var onSaveSuccess = function (result) {
             $scope.$emit('pmsApp:umsMenuMainUpdate', result);
@@ -17,6 +20,9 @@ angular.module('pmsApp').controller('UmsMenuMainDialogController',
             $scope.isSaving = false;
         };
 
+        $scope.changedValue=function(data){
+            console.log(data);
+        };
         var onSaveError = function (result) {
             $scope.isSaving = false;
         };

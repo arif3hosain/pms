@@ -36,7 +36,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @JsonIgnore
     @NotNull
-    @Size(min = 60, max = 60) 
+    @Size(min = 60, max = 60)
     @Column(name = "password_hash",length = 60)
     private String password;
 
@@ -47,6 +47,42 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Size(max = 50)
     @Column(name = "last_name", length = 50)
     private String lastName;
+
+//    @Size (max = 100)
+//    @Column(name = "address1", length = 60)
+//    private String address1;
+//
+//    @Size (max = 100)
+//    @Column(name = "address2", length = 60)
+//    private String address2;
+//
+//    @Size (max = 30)
+//    @Column(name = "mobile", length = 20)
+//    private String mobile;
+
+//    public String getAddress1() {
+//        return address1;
+//    }
+//
+//    public void setAddress1(String address1) {
+//        this.address1 = address1;
+//    }
+//
+//    public String getAddress2() {
+//        return address2;
+//    }
+//
+//    public void setAddress2(String address2) {
+//        this.address2 = address2;
+//    }
+//
+//    public String getMobile() {
+//        return mobile;
+//    }
+//
+//    public void setMobile(String mobile) {
+//        this.mobile = mobile;
+//    }
 
     @Email
     @Size(max = 100)
@@ -71,6 +107,17 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @Column(name = "reset_date", nullable = true)
     private ZonedDateTime resetDate = null;
+
+    @Column(name = "mobile", nullable = true)
+    private String mobile;
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     @JsonIgnore
     @ManyToMany

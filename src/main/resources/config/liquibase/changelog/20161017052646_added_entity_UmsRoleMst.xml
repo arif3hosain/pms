@@ -33,6 +33,10 @@
             <column name="created_by" type="integer"/>
             <column name="updated_by" type="integer"/>
         </createTable>
-        
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/ums_role_mst.csv"
+                  separator=","
+                  tableName="ums_role_mst">
+        </loadData>
     </changeSet>
 </databaseChangeLog>

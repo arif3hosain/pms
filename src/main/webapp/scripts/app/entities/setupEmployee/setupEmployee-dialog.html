@@ -1,0 +1,217 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="mySetupEmployeeLabel">Create or edit a SetupEmployee</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <!--<div class="form-group">-->
+            <!--<label for="id">ID</label>-->
+            <!--<input type="text" class="form-control" id="id" name="id"-->
+                    <!--ng-model="setupEmployee.id" readonly />-->
+        <!--</div>-->
+        <div class="form-group">
+            <label class="control-label" for="field_empCode">Employee Code</label>
+            <input type="text" class="form-control" name="empCode" id="field_empCode"
+                    ng-model="setupEmployee.empCode"
+                    required ng-maxlength="100" />
+            <div ng-show="editForm.empCode.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.empCode.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.empCode.$error.maxlength" translate-value-max="100">
+                    This field cannot be longer than 100 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_employeeTitle">Title</label>
+            <input type="text" class="form-control" name="employeeTitle" id="field_employeeTitle"
+                    ng-model="setupEmployee.employeeTitle"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_employeeName">Employee Name</label>
+            <input type="text" class="form-control" name="employeeName" id="field_employeeName"
+                    ng-model="setupEmployee.employeeName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_joiningDate">Joining Date</label>
+            <input id="field_joiningDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupEmployee.joiningDate" is-open="datePickerForJoiningDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForJoiningDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_stdWorkingHour">Working Hour</label>
+            <input type="number" class="form-control" name="stdWorkingHour" id="field_stdWorkingHour"
+                    ng-model="setupEmployee.stdWorkingHour"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_overTime">Over Time</label>
+            <input type="number" class="form-control" name="overTime" id="field_overTime"
+                    ng-model="setupEmployee.overTime"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_tinNo">Tin Number</label>
+            <input type="text" class="form-control" name="tinNo" id="field_tinNo"
+                    ng-model="setupEmployee.tinNo"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_deptId">Department ID</label>
+            <input type="number" class="form-control" name="deptId" id="field_deptId"
+                    ng-model="setupEmployee.deptId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_applicationId">Application ID</label>
+            <input type="number" class="form-control" name="applicationId" id="field_applicationId"
+                    ng-model="setupEmployee.applicationId"
+                     />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="setProfilePicture($file, setupEmployee)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_profilePicture">Profile Picture</label>
+            <div>
+                <img data-ng-src="{{'data:' + setupEmployee.profilePictureContentType + ';base64,' + setupEmployee.profilePicture}}" style="max-height: 100px;" ng-if="setupEmployee.profilePicture"/>
+                <div class="help-block clearfix">
+                    <span class="pull-left">{{setupEmployee.profilePictureContentType}} {{byteSize(setupEmployee.profilePicture)}}</span>
+                    <button ng-click="setupEmployee.profilePicture=null;setupEmployee.profilePictureContentType=null;"
+                            ng-if="setupEmployee.profilePicture"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="setProfilePicture($file, setupEmployee)" accept="image/*">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="profilePicture" id="field_profilePicture"
+                    ng-model="setupEmployee.profilePicture"
+                     />
+            <input type="hidden" class="form-control" name="profilePictureContentType" id="field_profilePictureContentType"
+                    ng-model="setupEmployee.profilePictureContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_superiorId">Superior ID</label>
+            <input type="number" class="form-control" name="superiorId" id="field_superiorId"
+                    ng-model="setupEmployee.superiorId"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_degCode">Designation Code</label>
+            <input type="text" class="form-control" name="degCode" id="field_degCode"
+                    ng-model="setupEmployee.degCode"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_employeeType">Employee Type</label>
+            <input type="text" class="form-control" name="employeeType" id="field_employeeType"
+                    ng-model="setupEmployee.employeeType"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_bloodGroup">Blood Group</label>
+            <input type="text" class="form-control" name="bloodGroup" id="field_bloodGroup"
+                    ng-model="setupEmployee.bloodGroup"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_phone">Phone</label>
+            <input type="text" class="form-control" name="phone" id="field_phone"
+                    ng-model="setupEmployee.phone"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="setupEmployee.address"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_hourlyRate">Hourly Rate</label>
+            <input type="number" class="form-control" name="hourlyRate" id="field_hourlyRate"
+                    ng-model="setupEmployee.hourlyRate"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_fixedSalary">Fixed Salary</label>
+            <input type="number" class="form-control" name="fixedSalary" id="field_fixedSalary"
+                    ng-model="setupEmployee.fixedSalary"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_dateOfBirth">Date Of Birth</label>
+            <input id="field_dateOfBirth" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupEmployee.dateOfBirth" is-open="datePickerForDateOfBirth.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDateOfBirthOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_status">Status</label>-->
+            <!--<input type="number" class="form-control" name="status" id="field_status"-->
+                    <!--ng-model="setupEmployee.status"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_createdDate">CreatedDate</label>-->
+            <!--<input id="field_createdDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupEmployee.createdDate" is-open="datePickerForCreatedDate.status.opened"-->
+            <!--/>-->
+            <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="datePickerForCreatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_updatedDate">UpdatedDate</label>-->
+            <!--<input id="field_updatedDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupEmployee.updatedDate" is-open="datePickerForUpdatedDate.status.opened"-->
+            <!--/>-->
+            <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="datePickerForUpdatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_createdBy">CreatedBy</label>-->
+            <!--<input type="number" class="form-control" name="createdBy" id="field_createdBy"-->
+                    <!--ng-model="setupEmployee.createdBy"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_updatedBy">UpdatedBy</label>-->
+            <!--<input type="number" class="form-control" name="updatedBy" id="field_updatedBy"-->
+                    <!--ng-model="setupEmployee.updatedBy"-->
+                     <!--/>-->
+        <!--</div>-->
+
+        <div class="form-group">
+            <label for="field_user">user</label>
+            <select class="form-control" id="field_user" name="user" ng-model="setupEmployee.user" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_setupCompany">setupCompany</label>
+            <select class="form-control" id="field_setupCompany" name="setupCompany" ng-model="setupEmployee.setupCompany" ng-options="setupCompany as setupCompany.name for setupCompany in setupcompanys track by setupCompany.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

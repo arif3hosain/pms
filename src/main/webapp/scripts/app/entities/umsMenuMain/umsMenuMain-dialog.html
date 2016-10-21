@@ -4,17 +4,18 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="myUmsMenuMainLabel">Create or edit a UmsMenuMain</h4>
+        <h4 class="modal-title" ng-if="umsMenuMain.id==null" id="myUmsMenuMainLabel">Create Menu</h4>
+        <h4 class="modal-title" ng-if="umsMenuMain.id!=null"  id="myUmsMenuMainLabel">Update Menu</h4>
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
+        <!--<div class="form-group">-->
+            <!--<label for="id">ID</label>-->
+            <!--<input type="text" class="form-control" id="id" name="id"-->
+                    <!--ng-model="umsMenuMain.id" readonly />-->
+        <!--</div>-->
         <div class="form-group">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="umsMenuMain.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_menuName">MenuName</label>
+            <label class="control-label" for="field_menuName">Menu Name</label>
             <input type="text" class="form-control" name="menuName" id="field_menuName"
                     ng-model="umsMenuMain.menuName"
                     required />
@@ -26,7 +27,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_menuType">MenuType</label>
+            <label class="control-label" for="field_menuType">Menu Type</label>
             <input type="text" class="form-control" name="menuType" id="field_menuType"
                     ng-model="umsMenuMain.menuType"
                     required />
@@ -38,25 +39,27 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_RunFileName">RunFileName</label>
+            <label class="control-label" for="field_RunFileName">Run File Name</label>
             <input type="text" class="form-control" name="RunFileName" id="field_RunFileName"
                     ng-model="umsMenuMain.RunFileName"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_MenuSl">MenuSl</label>
+            <label class="control-label" for="field_MenuSl">Menu Serial</label>
             <input type="number" class="form-control" name="MenuSl" id="field_MenuSl"
                     ng-model="umsMenuMain.MenuSl"
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_ParentId">ParentId</label>
-            <input type="number" class="form-control" name="ParentId" id="field_ParentId"
-                    ng-model="umsMenuMain.ParentId"
-                     />
+            {{menus}}
+            <label class="control-label" for="field_ParentId">Parent Id</label>
+            <!--<input type="number" class="form-control" name="ParentId" id="field_ParentId"-->
+                    <!--ng-model="umsMenuMain.ParentId"-->
+                     <!--/>-->
+            <select ng-model="umsMenuMain.ParentId" class="form-control" name="ParentId" id="field_ParentId" ng-change="changedValue(umsMenuMain.ParentId)" ng-optons=" menu.id as menu.id for menu in menus track by menu.id"></select>
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_homeDir">HomeDir</label>
+            <label class="control-label" for="field_homeDir">Home Directory</label>
             <input type="text" class="form-control" name="homeDir" id="field_homeDir"
                     ng-model="umsMenuMain.homeDir"
                      />
@@ -68,13 +71,13 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_menuLevel">MenuLevel</label>
+            <label class="control-label" for="field_menuLevel">Menu Level</label>
             <input type="number" class="form-control" name="menuLevel" id="field_menuLevel"
                     ng-model="umsMenuMain.menuLevel"
                      />
         </div>
         <div class="form-group" ngf-drop ngf-change="setPrevIconLevel($file, umsMenuMain)">
-            <label class="control-label" for="field_prevIconLevel">PrevIconLevel</label>
+            <label class="control-label" for="field_prevIconLevel">Icon</label>
             <div>
                 <div class="help-block clearfix">
                     <span class="pull-left">{{umsMenuMain.prevIconLevelContentType}} {{byteSize(umsMenuMain.prevIconLevel)}}</span>
@@ -95,40 +98,40 @@
             <input type="hidden" class="form-control" name="prevIconLevelContentType" id="field_prevIconLevelContentType"
                     ng-model="umsMenuMain.prevIconLevelContentType" />
         </div>
-        <div class="form-group">
-            <label class="control-label" for="field_status">Status</label>
-            <input type="number" class="form-control" name="status" id="field_status"
-                    ng-model="umsMenuMain.status"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_createdDate">CreatedDate</label>
-            <input id="field_createdDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="umsMenuMain.createdDate" is-open="datePickerForCreatedDate.status.opened"
-            />
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="datePickerForCreatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_updatedDate">UpdatedDate</label>
-            <input id="field_updatedDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="umsMenuMain.updatedDate" is-open="datePickerForUpdatedDate.status.opened"
-            />
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="datePickerForUpdatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_createdBy">CreatedBy</label>
-            <input type="number" class="form-control" name="createdBy" id="field_createdBy"
-                    ng-model="umsMenuMain.createdBy"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_updatedBy">UpdatedBy</label>
-            <input type="number" class="form-control" name="updatedBy" id="field_updatedBy"
-                    ng-model="umsMenuMain.updatedBy"
-                     />
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_status">Status</label>-->
+            <!--<input type="number" class="form-control" name="status" id="field_status"-->
+                    <!--ng-model="umsMenuMain.status"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_createdDate">CreatedDate</label>-->
+            <!--<input id="field_createdDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="umsMenuMain.createdDate" is-open="datePickerForCreatedDate.status.opened"-->
+            <!--/>-->
+            <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="datePickerForCreatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_updatedDate">UpdatedDate</label>-->
+            <!--<input id="field_updatedDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="umsMenuMain.updatedDate" is-open="datePickerForUpdatedDate.status.opened"-->
+            <!--/>-->
+            <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="datePickerForUpdatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_createdBy">CreatedBy</label>-->
+            <!--<input type="number" class="form-control" name="createdBy" id="field_createdBy"-->
+                    <!--ng-model="umsMenuMain.createdBy"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_updatedBy">UpdatedBy</label>-->
+            <!--<input type="number" class="form-control" name="updatedBy" id="field_updatedBy"-->
+                    <!--ng-model="umsMenuMain.updatedBy"-->
+                     <!--/>-->
+        <!--</div>-->
 
     </div>
     <div class="modal-footer">

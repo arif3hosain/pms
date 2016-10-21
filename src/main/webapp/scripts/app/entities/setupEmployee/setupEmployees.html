@@ -1,0 +1,116 @@
+<div>
+    <!--<h2>SetupEmployees</h2>-->
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="setupEmployee.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Add New</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="Search">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <!--<th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="empCode"><span>Employee Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="employeeTitle"><span>Employee Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="employeeName"><span>Employee Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="joiningDate"><span>Joining Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="stdWorkingHour"><span>Working Hour</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="overTime"><span>Over Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tinNo"><span>Tin Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deptId"><span>Department ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="applicationId"><span>Application ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="profilePicture"><span>Profile Picture</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="superiorId"><span>Superior ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="degCode"><span>Designation Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="employeeType"><span>Employee Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bloodGroup"><span>Blood Group</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="phone"><span>Phone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address"><span>Address</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="hourlyRate"><span>Hourly Rate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fixedSalary"><span>Fixed Salary</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateOfBirth"><span>Date Of Birth</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="createdDate"><span>CreatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="updatedDate"><span>UpdatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="createdBy"><span>CreatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="updatedBy"><span>UpdatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="user.login"><span>User</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="setupCompany.name"><span>Company</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="setupEmployee in setupEmployees track by setupEmployee.id">
+                    <!--<td><a ui-sref="setupEmployee.detail({id:setupEmployee.id})">{{setupEmployee.id}}</a></td>-->
+                    <td>{{setupEmployee.empCode}}</td>
+                    <td>{{setupEmployee.employeeTitle}}</td>
+                    <td>{{setupEmployee.employeeName}}</td>
+                        <td>{{setupEmployee.joiningDate | date:'mediumDate'}}</td>
+                    <td>{{setupEmployee.stdWorkingHour}}</td>
+                    <td>{{setupEmployee.overTime}}</td>
+                    <td>{{setupEmployee.tinNo}}</td>
+                    <td>{{setupEmployee.deptId}}</td>
+                    <td>{{setupEmployee.applicationId}}</td>
+                    <td>
+                        <img data-ng-src="{{'data:' + setupEmployee.profilePictureContentType + ';base64,' + setupEmployee.profilePicture}}" style="max-height: 30px;" ng-if="setupEmployee.profilePicture"/> {{setupEmployee.profilePictureContentType}} {{byteSize(setupEmployee.profilePicture)}}
+                    </td>
+                    <td>{{setupEmployee.superiorId}}</td>
+                    <td>{{setupEmployee.degCode}}</td>
+                    <td>{{setupEmployee.employeeType}}</td>
+                    <td>{{setupEmployee.bloodGroup}}</td>
+                    <td>{{setupEmployee.phone}}</td>
+                    <td>{{setupEmployee.address}}</td>
+                    <td>{{setupEmployee.hourlyRate}}</td>
+                    <td>{{setupEmployee.fixedSalary}}</td>
+                        <td>{{setupEmployee.dateOfBirth | date:'mediumDate'}}</td>
+                    <!--<td>{{setupEmployee.status}}</td>-->
+                        <!--<td>{{setupEmployee.createdDate | date:'mediumDate'}}</td>-->
+                        <!--<td>{{setupEmployee.updatedDate | date:'mediumDate'}}</td>-->
+                    <!--<td>{{setupEmployee.createdBy}}</td>-->
+                    <!--<td>{{setupEmployee.updatedBy}}</td>-->
+                    <td>
+                        <!--{{setupEmployee.user.login}}-->
+                    </td>
+                    <td>
+                        <a ui-sref="setupCompany.detail({id:setupEmployee.setupCompany.id})">{{setupEmployee.setupCompany.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="setupEmployee.detail({id:setupEmployee.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="setupEmployee.edit({id:setupEmployee.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="setupEmployee.delete({id:setupEmployee.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>
