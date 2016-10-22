@@ -59,9 +59,11 @@ public class MailService {
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, CharEncoding.UTF_8);
             message.setTo(to);
-            message.setFrom(jHipsterProperties.getMail().getFrom());
+//            message.setFrom(jHipsterProperties.getMail().getFrom());
+            message.setFrom("arif3hosain@gmail.com");
             message.setSubject(subject);
             message.setText(content, isHtml);
+            log.debug("email detail info >>>>>>>>>>>>>>>>>>>"+message+"or "+jHipsterProperties.getMail().getFrom());
             javaMailSender.send(mimeMessage);
             log.debug("Sent e-mail to User '{}'", to);
         } catch (Exception e) {
@@ -104,5 +106,5 @@ public class MailService {
         String subject = messageSource.getMessage("email.reset.title", null, locale);
         sendEmail(user.getEmail(), subject, content, false, true);
     }
-    
+
 }

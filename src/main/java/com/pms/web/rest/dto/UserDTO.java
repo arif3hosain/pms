@@ -6,6 +6,7 @@ import com.pms.domain.User;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.stream.Collectors;
 /**
@@ -35,6 +36,35 @@ public class UserDTO {
     @Size(min = 5, max = 100)
     private String email;
 
+    @Size(min = 3,max = 20)
+    private String mobile;
+
+    private String address1;
+    private String address2;
+    private String country;
+    private LocalDate dob;
+    private String gender;
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
     private boolean activated = false;
 
     @Size(min = 2, max = 5)
@@ -46,23 +76,43 @@ public class UserDTO {
     }
 
     public UserDTO(User user) {
-        this(user.getLogin(), null, user.getFirstName(), user.getLastName(),
-            user.getEmail(), user.getActivated(), user.getLangKey(),
+        this(user.getLogin(), null,
+            user.getFirstName(),
+            user.getLastName(),
+            user.getEmail(),
+            user.getMobile(),
+            user.getAddress1(),
+            user.getAddress2(),
+            user.getGender(),
+            user.getDob(),
+            user.getCountry(),
+            user.getActivated(),
+            user.getLangKey(),
             user.getAuthorities().stream().map(Authority::getName)
                 .collect(Collectors.toSet()));
     }
 
     public UserDTO(String login, String password, String firstName, String lastName,
-        String email, boolean activated, String langKey, Set<String> authorities) {
+        String email,String mobile,String address1,String address2,String gender,LocalDate dob,String country, boolean activated, String langKey, Set<String> authorities) {
 
         this.login = login;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.mobile=mobile;
+        this.address1=address1;
+        this.address2=address2;
+        this.gender=gender;
+        this.dob=dob;
+        this.country=country;
         this.activated = activated;
         this.langKey = langKey;
         this.authorities = authorities;
+    }
+
+    public String getMobile() {
+        return mobile;
     }
 
     public String getPassword() {
@@ -105,6 +155,7 @@ public class UserDTO {
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
+            ", mobile='" + mobile + '\'' +
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
             ", authorities=" + authorities +

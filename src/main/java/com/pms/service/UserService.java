@@ -90,7 +90,7 @@ public class UserService {
             });
     }
 
-    public User createUserInformation(String login, String password, String firstName, String lastName, String email,
+    public User createUserInformation(String login, String password, String firstName, String lastName, String email,String mobile,String address1,String address2,String gender,LocalDate dob,String country,
         String langKey) {
 
         User newUser = new User();
@@ -104,15 +104,21 @@ public class UserService {
         newUser.setLastName(lastName);
         newUser.setEmail(email);
         newUser.setLangKey(langKey);
+        newUser.setMobile(mobile);
+        newUser.setAddress1(address1);
+        newUser.setAddress2(address2);
+        newUser.setGender(gender);
+        newUser.setDob(dob);
+        newUser.setCountry(country);
         // new user is not active
-        newUser.setActivated(false);
+        newUser.setActivated(true);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
         userSearchRepository.save(newUser);
-        log.debug("Created Information for User: {}", newUser);
+        log.debug("Created Information for User: {}>>>>>>>>>>>>>>>>>>>>>>>>>", newUser);
         return newUser;
     }
 
@@ -145,11 +151,17 @@ public class UserService {
         return user;
     }
 
-    public void updateUserInformation(String firstName, String lastName, String email, String langKey) {
+    public void updateUserInformation(String firstName, String lastName, String email,String mobile, String address1,String address2,String gender,LocalDate dob,String country,String langKey) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUser().getUsername()).ifPresent(u -> {
             u.setFirstName(firstName);
             u.setLastName(lastName);
             u.setEmail(email);
+            u.setMobile(mobile);
+            u.setAddress1(address1);
+            u.setAddress2(address2);
+            u.setGender(gender);
+            u.setDob(dob);
+            u.setCountry(country);
             u.setLangKey(langKey);
             userRepository.save(u);
             userSearchRepository.save(u);

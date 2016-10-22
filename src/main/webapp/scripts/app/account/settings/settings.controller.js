@@ -5,7 +5,8 @@ angular.module('pmsApp')
         $scope.success = null;
         $scope.error = null;
         Principal.identity().then(function(account) {
-            $scope.settingsAccount = copyAccount(account);
+        console.log(account);
+            //$scope.settingsAccount = copyAccount(account);
         });
 
         $scope.save = function () {
@@ -25,9 +26,7 @@ angular.module('pmsApp')
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
          */
         var copyAccount = function (account) {
-        console.log('.......');
         console.log(account);
-        console.log('........');
             return {
                 activated: account.activated,
                 email: account.email,

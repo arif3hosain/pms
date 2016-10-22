@@ -8,7 +8,9 @@
     </div>
 
     <div class="col-md-6">
-        <button class="btb btn-info" ng-click="edit_profile()">Edit Profile</button> <button ng-if="edit" class="btb btn-info" ng-click="saveProfile()">Save Changes</button>
+        <form name="form" role="form" novalidate ng-submit="save()" show-validation>
+        <button type="button"  class="btn btn-info" ng-click="edit_profile()"><span class="glyphicon glyphicon-edit"></span> Edit Profile</button>
+        <button ng-if="edit" type="submit" ng-disabled="form.$invalid" class="btn btn-primary"><span class="glyphicon glyphicon-saved"></span> Save</button>
         <div class="form-group">
             <label class="control-label" for="username">Username</label>
             <!--<input ng-if="edit" class="form-control" type="text" name="username" ng-model="username" id="username">-->
@@ -64,7 +66,8 @@
             <label class="control-label" for="lastName">Mobile Number</label>
             <input ng-if="edit" type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile number"
                    ng-model="settingsAccount.mobile" ng-minlength=1 ng-maxlength=50 required maxlength="50">
-            <span ng-if="!edit">{{settingsAccount.mobile}}</span>
+            <span>{{settingsAccount.mobile}}</span>
+            <span>{{settingsAccount}}</span>
             <!--<div ng-show="form.lastName.$dirty && form.lastName.$invalid">-->
             <!--<p class="help-block"-->
             <!--ng-show="form.lastName.$error.required">-->
@@ -84,6 +87,7 @@
             <label class="control-label" for="email">E-mail</label>
             <!--<input type="email" class="form-control" id="email" name="email" placeholder="Your e-mail"-->
                    <!--ng-model="settingsAccount.email" ng-minlength=5 ng-maxlength=100 required maxlength="100">-->
+          <span ng-if="!edit">{{settingsAccount.email}}</span>
           <span ng-if="edit">{{settingsAccount.email}}</span>
             <div ng-show="form.email.$dirty && form.email.$invalid">
                 <p class="help-block"
@@ -104,7 +108,7 @@
                 </p>
             </div>
         </div>
-
+</form>
     </div>
     <!--<div class="col-md-6">-->
 

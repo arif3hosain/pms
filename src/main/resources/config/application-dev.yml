@@ -42,7 +42,16 @@ spring:
                   logs: target/elasticsearch/log
                   data: target/elasticsearch/data
     mail:
-        host: localhost
+        host: smtp.gmail.com
+        port: 587
+        username: arif3hosain@gmail.comm
+        password: DavidMahmud25
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+                    auth: true
+                    starttls.enable: true
+                    ssl.trust: smtp.gmail.com
     messages:
         cache-seconds: 1
     thymeleaf:
@@ -64,7 +73,7 @@ jhipster:
         ehcache:
             maxBytesLocalHeap: 16M
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: pms@localhost
+        from: arif3hosain@gmail.com
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         spark:

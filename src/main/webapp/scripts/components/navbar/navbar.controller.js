@@ -10,4 +10,16 @@ angular.module('pmsApp')
             Auth.logout();
             $state.go('home');
         };
+
+        var copyAccount = function (account) {
+                console.log(account);
+                    return {
+                        activated: account.activated,
+                        email: account.email,
+                        firstName: account.firstName,
+                        langKey: account.langKey,
+                        lastName: account.lastName,
+                        login: account.login
+                    }
+                }
     });

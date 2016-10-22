@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.time.ZonedDateTime;
@@ -48,41 +49,74 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "last_name", length = 50)
     private String lastName;
 
-//    @Size (max = 100)
-//    @Column(name = "address1", length = 60)
-//    private String address1;
-//
-//    @Size (max = 100)
-//    @Column(name = "address2", length = 60)
-//    private String address2;
-//
-//    @Size (max = 30)
-//    @Column(name = "mobile", length = 20)
-//    private String mobile;
+    @Size (max = 100)
+    @Column(name = "address1", length = 60)
+    private String address1;
 
-//    public String getAddress1() {
-//        return address1;
-//    }
-//
-//    public void setAddress1(String address1) {
-//        this.address1 = address1;
-//    }
-//
-//    public String getAddress2() {
-//        return address2;
-//    }
-//
-//    public void setAddress2(String address2) {
-//        this.address2 = address2;
-//    }
-//
-//    public String getMobile() {
-//        return mobile;
-//    }
-//
-//    public void setMobile(String mobile) {
-//        this.mobile = mobile;
-//    }
+    @Size (max = 100)
+    @Column(name = "address2", length = 60)
+    private String address2;
+
+    @Column(name = "dob")
+    private LocalDate dob;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "request_for")
+    private String requestFor;
+
+    @Column(name = "country")
+    private String country;
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getRequestFor() {
+        return requestFor;
+    }
+
+    public void setRequestFor(String requestFor) {
+        this.requestFor = requestFor;
+    }
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
 
     @Email
     @Size(max = 100)
@@ -267,6 +301,12 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
+            ", mobile='" + mobile + '\'' +
+            ", address1='" + address1 + '\'' +
+            ", address2='" + address2 + '\'' +
+            ", dob='" + dob + '\'' +
+            ", country='" + country + '\'' +
+            ", gender='" + gender + '\'' +
             ", activated='" + activated + '\'' +
             ", langKey='" + langKey + '\'' +
             ", activationKey='" + activationKey + '\'' +

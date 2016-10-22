@@ -6,6 +6,7 @@ angular.module('pmsApp')
         $scope.error = null;
         Principal.identity().then(function(account) {
             $scope.settingsAccount = copyAccount(account);
+
         });
 
         $scope.edit=false;
@@ -13,38 +14,36 @@ angular.module('pmsApp')
         $scope.edit=true;
         };
 
-        $scope.saveProfile=function(){
-        $scope.save();
-        $scope.edit=false;
-        };
-
         $scope.save = function () {
+        $scope.edit=false;
             Auth.updateAccount($scope.settingsAccount).then(function() {
+            console.log($scope.settingsAccount);
+            console.log($scope.settingsAccount.mobile);
                 $scope.error = null;
                 $scope.success = 'OK';
+                $scope.mobile=null;
                 Principal.identity(true).then(function(account) {
                     $scope.settingsAccount = copyAccount(account);
+
                 });
             }).catch(function() {
                 $scope.success = null;
                 $scope.error = 'ERROR';
             });
         };
-
         /**
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
          */
         var copyAccount = function (account) {
-        console.log('.......');
-        console.log(account);
-        console.log('........');
+
             return {
                 activated: account.activated,
                 email: account.email,
                 firstName: account.firstName,
                 langKey: account.langKey,
                 lastName: account.lastName,
-                login: account.login
+                login: account.login,
+                mobile:account.mobile
             }
         }
     });
