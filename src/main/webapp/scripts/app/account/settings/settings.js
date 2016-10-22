@@ -17,7 +17,23 @@ angular.module('pmsApp')
                     }
                 },
                 resolve: {
-                    
+
+                }
+            }).state('settings.profile', {
+                parent: 'account',
+                url: '/profile',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'Settings'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/account/settings/profile.html',
+                        controller: 'MemberProfileController'
+                    }
+                },
+                resolve: {
+
                 }
             });
     });

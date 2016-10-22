@@ -1,12 +1,22 @@
 'use strict';
 
 angular.module('pmsApp')
-    .controller('SettingsController', function ($scope, Principal, Auth) {
+    .controller('MemberProfileController', function ($scope, Principal, Auth) {
         $scope.success = null;
         $scope.error = null;
         Principal.identity().then(function(account) {
             $scope.settingsAccount = copyAccount(account);
         });
+
+        $scope.edit=false;
+        $scope.edit_profile=function(){
+        $scope.edit=true;
+        };
+
+        $scope.saveProfile=function(){
+        $scope.save();
+        $scope.edit=false;
+        };
 
         $scope.save = function () {
             Auth.updateAccount($scope.settingsAccount).then(function() {
