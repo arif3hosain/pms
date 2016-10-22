@@ -63,8 +63,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "gender")
     private String gender;
 
-    @Column(name = "request_for")
-    private String requestFor;
+//    @Column(name = "request_for")
+//    private String requestFor;
 
     @Column(name = "country")
     private String country;
@@ -93,13 +93,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.gender = gender;
     }
 
-    public String getRequestFor() {
-        return requestFor;
-    }
-
-    public void setRequestFor(String requestFor) {
-        this.requestFor = requestFor;
-    }
+//    public String getRequestFor() {
+//        return requestFor;
+//    }
+//
+//    public void setRequestFor(String requestFor) {
+//        this.requestFor = requestFor;
+//    }
 
     public String getAddress1() {
         return address1;

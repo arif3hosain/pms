@@ -43,7 +43,12 @@ angular.module('pmsApp')
                 langKey: account.langKey,
                 lastName: account.lastName,
                 login: account.login,
-                mobile:account.mobile
+                mobile:account.mobile,
+                address1:account.address1,
+                address2:account.address2,
+                dob:account.dob,
+                gender:account.gender,
+                country:account.country,
             }
         }
     });

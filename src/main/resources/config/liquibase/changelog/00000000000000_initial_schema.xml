@@ -50,6 +50,21 @@
             <column name="mobile" type="varchar(20)">
                 <constraints nullable="true"/>
             </column>
+            <column name="address1" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="address2" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="gender" type="varchar(10)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="dob" type="date">
+                <constraints nullable="true"/>
+            </column>
+            <column name="country" type="varchar(20)">
+                <constraints nullable="true"/>
+            </column>
             <column name="last_modified_by" type="varchar(50)"/>
             <column name="last_modified_date" type="timestamp"/>
         </createTable>
