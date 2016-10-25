@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
@@ -41,6 +41,8 @@
                         <!--&#xA0;<span >Book</span></a></li>-->
                         <li ui-sref-active="active" ><a ui-sref="setupEmployee" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
                         &#xA0;<span >Setup Employee</span></a></li>
+                        <li ui-sref-active="active" ><a ui-sref="setupCompany" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                        &#xA0;<span >setupCompany</span></a></li>
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                     </ul>
                 </li>
@@ -48,7 +50,8 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="" id="account-menu">
                         <span>
                             <span class="glyphicon glyphicon-user"></span>
-                            <span class="hidden-sm">
+                            <span c
+                                  lass="hidden-sm">
                                 Account
                             </span>
                             <b class="caret"></b>
@@ -57,6 +60,8 @@
                     <ul class="dropdown-menu">
                         <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings.profile" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
                             &#xA0;<span>Profile</span></a></li>
+                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="setupCompany.create" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
+                            &#xA0;<span>Create Company</span></a></li>
                         <!--<li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-wrench"></span>-->
                             <!--&#xA0;<span>Settings</span></a></li>-->
                         <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="password" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-lock"></span>

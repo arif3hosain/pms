@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pmsApp')
-    .controller('SetupCompanyDetailController', function ($scope, $rootScope, $stateParams, entity, SetupCompany) {
+    .controller('SetupCompanyDetailController', function ($scope, $rootScope, $stateParams, DataUtils, entity, SetupCompany, User) {
         $scope.setupCompany = entity;
         $scope.load = function (id) {
             SetupCompany.get({id: id}, function(result) {
@@ -13,4 +13,5 @@ angular.module('pmsApp')
         });
         $scope.$on('$destroy', unsubscribe);
 
+        $scope.byteSize = DataUtils.byteSize;
     });

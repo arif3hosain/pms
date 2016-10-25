@@ -1,0 +1,103 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "ccode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "add1",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "add2",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "phone",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "mobile",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "fax",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "vatregno",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "web",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "companyLogo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "logo"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "tin",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "updatedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "updatedBy",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20161023052101",
+    "dto": "no",
+    "pagination": "pagination"
+}

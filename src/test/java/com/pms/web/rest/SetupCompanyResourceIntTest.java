@@ -21,6 +21,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -44,36 +45,31 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class SetupCompanyResourceIntTest {
 
-    private static final String DEFAULT_COMPANY_CODE = "AAAAA";
-    private static final String UPDATED_COMPANY_CODE = "BBBBB";
+    private static final String DEFAULT_CCODE = "AAAAA";
+    private static final String UPDATED_CCODE = "BBBBB";
     private static final String DEFAULT_NAME = "AAAAA";
     private static final String UPDATED_NAME = "BBBBB";
     private static final String DEFAULT_ADD1 = "AAAAA";
     private static final String UPDATED_ADD1 = "BBBBB";
     private static final String DEFAULT_ADD2 = "AAAAA";
     private static final String UPDATED_ADD2 = "BBBBB";
-    private static final String DEFAULT_PHONE1 = "AAAAA";
-    private static final String UPDATED_PHONE1 = "BBBBB";
-    private static final String DEFAULT_PHONE2 = "AAAAA";
-    private static final String UPDATED_PHONE2 = "BBBBB";
+    private static final String DEFAULT_PHONE = "AAAAA";
+    private static final String UPDATED_PHONE = "BBBBB";
+    private static final String DEFAULT_MOBILE = "AAAAA";
+    private static final String UPDATED_MOBILE = "BBBBB";
     private static final String DEFAULT_FAX = "AAAAA";
     private static final String UPDATED_FAX = "BBBBB";
-    private static final String DEFAULT_EMAIL = "AAAAA";
-    private static final String UPDATED_EMAIL = "BBBBB";
-    private static final String DEFAULT_VATNO1 = "AAAAA";
-    private static final String UPDATED_VATNO1 = "BBBBB";
+    private static final String DEFAULT_VATREGNO = "AAAAA";
+    private static final String UPDATED_VATREGNO = "BBBBB";
     private static final String DEFAULT_WEB = "AAAAA";
     private static final String UPDATED_WEB = "BBBBB";
+
+    private static final byte[] DEFAULT_COMPANY_LOGO = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_COMPANY_LOGO = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_COMPANY_LOGO_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_COMPANY_LOGO_CONTENT_TYPE = "image/png";
     private static final String DEFAULT_TIN = "AAAAA";
     private static final String UPDATED_TIN = "BBBBB";
-    private static final String DEFAULT_CSYMBOL = "AAAAA";
-    private static final String UPDATED_CSYMBOL = "BBBBB";
-    private static final String DEFAULT_SECUSE = "AAAAA";
-    private static final String UPDATED_SECUSE = "BBBBB";
-    private static final String DEFAULT_BCSYMBOL = "AAAAA";
-    private static final String UPDATED_BCSYMBOL = "BBBBB";
-    private static final String DEFAULT_CFNAME = "AAAAA";
-    private static final String UPDATED_CFNAME = "BBBBB";
 
     private static final Integer DEFAULT_STATUS = 1;
     private static final Integer UPDATED_STATUS = 2;
@@ -83,9 +79,8 @@ public class SetupCompanyResourceIntTest {
 
     private static final LocalDate DEFAULT_UPDATED_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
-
-    private static final Integer DEFAULT_CREATED_BY = 1;
-    private static final Integer UPDATED_CREATED_BY = 2;
+    private static final String DEFAULT_CREATED_BY = "AAAAA";
+    private static final String UPDATED_CREATED_BY = "BBBBB";
 
     private static final Integer DEFAULT_UPDATED_BY = 1;
     private static final Integer UPDATED_UPDATED_BY = 2;
@@ -120,21 +115,18 @@ public class SetupCompanyResourceIntTest {
     @Before
     public void initTest() {
         setupCompany = new SetupCompany();
-        setupCompany.setCompanyCode(DEFAULT_COMPANY_CODE);
+        setupCompany.setCcode(DEFAULT_CCODE);
         setupCompany.setName(DEFAULT_NAME);
         setupCompany.setAdd1(DEFAULT_ADD1);
         setupCompany.setAdd2(DEFAULT_ADD2);
-        setupCompany.setPhone1(DEFAULT_PHONE1);
-        setupCompany.setPhone2(DEFAULT_PHONE2);
+        setupCompany.setPhone(DEFAULT_PHONE);
+        setupCompany.setMobile(DEFAULT_MOBILE);
         setupCompany.setFax(DEFAULT_FAX);
-        setupCompany.setEmail(DEFAULT_EMAIL);
-        setupCompany.setVatno1(DEFAULT_VATNO1);
+        setupCompany.setVatregno(DEFAULT_VATREGNO);
         setupCompany.setWeb(DEFAULT_WEB);
+        setupCompany.setCompanyLogo(DEFAULT_COMPANY_LOGO);
+        setupCompany.setCompanyLogoContentType(DEFAULT_COMPANY_LOGO_CONTENT_TYPE);
         setupCompany.setTin(DEFAULT_TIN);
-        setupCompany.setCsymbol(DEFAULT_CSYMBOL);
-        setupCompany.setSecuse(DEFAULT_SECUSE);
-        setupCompany.setBcsymbol(DEFAULT_BCSYMBOL);
-        setupCompany.setCfname(DEFAULT_CFNAME);
         setupCompany.setStatus(DEFAULT_STATUS);
         setupCompany.setCreatedDate(DEFAULT_CREATED_DATE);
         setupCompany.setUpdatedDate(DEFAULT_UPDATED_DATE);
@@ -158,21 +150,18 @@ public class SetupCompanyResourceIntTest {
         List<SetupCompany> setupCompanys = setupCompanyRepository.findAll();
         assertThat(setupCompanys).hasSize(databaseSizeBeforeCreate + 1);
         SetupCompany testSetupCompany = setupCompanys.get(setupCompanys.size() - 1);
-        assertThat(testSetupCompany.getCompanyCode()).isEqualTo(DEFAULT_COMPANY_CODE);
+        assertThat(testSetupCompany.getCcode()).isEqualTo(DEFAULT_CCODE);
         assertThat(testSetupCompany.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testSetupCompany.getAdd1()).isEqualTo(DEFAULT_ADD1);
         assertThat(testSetupCompany.getAdd2()).isEqualTo(DEFAULT_ADD2);
-        assertThat(testSetupCompany.getPhone1()).isEqualTo(DEFAULT_PHONE1);
-        assertThat(testSetupCompany.getPhone2()).isEqualTo(DEFAULT_PHONE2);
+        assertThat(testSetupCompany.getPhone()).isEqualTo(DEFAULT_PHONE);
+        assertThat(testSetupCompany.getMobile()).isEqualTo(DEFAULT_MOBILE);
         assertThat(testSetupCompany.getFax()).isEqualTo(DEFAULT_FAX);
-        assertThat(testSetupCompany.getEmail()).isEqualTo(DEFAULT_EMAIL);
-        assertThat(testSetupCompany.getVatno1()).isEqualTo(DEFAULT_VATNO1);
+        assertThat(testSetupCompany.getVatregno()).isEqualTo(DEFAULT_VATREGNO);
         assertThat(testSetupCompany.getWeb()).isEqualTo(DEFAULT_WEB);
+        assertThat(testSetupCompany.getCompanyLogo()).isEqualTo(DEFAULT_COMPANY_LOGO);
+        assertThat(testSetupCompany.getCompanyLogoContentType()).isEqualTo(DEFAULT_COMPANY_LOGO_CONTENT_TYPE);
         assertThat(testSetupCompany.getTin()).isEqualTo(DEFAULT_TIN);
-        assertThat(testSetupCompany.getCsymbol()).isEqualTo(DEFAULT_CSYMBOL);
-        assertThat(testSetupCompany.getSecuse()).isEqualTo(DEFAULT_SECUSE);
-        assertThat(testSetupCompany.getBcsymbol()).isEqualTo(DEFAULT_BCSYMBOL);
-        assertThat(testSetupCompany.getCfname()).isEqualTo(DEFAULT_CFNAME);
         assertThat(testSetupCompany.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testSetupCompany.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testSetupCompany.getUpdatedDate()).isEqualTo(DEFAULT_UPDATED_DATE);
@@ -182,28 +171,10 @@ public class SetupCompanyResourceIntTest {
 
     @Test
     @Transactional
-    public void checkCompanyCodeIsRequired() throws Exception {
+    public void checkCcodeIsRequired() throws Exception {
         int databaseSizeBeforeTest = setupCompanyRepository.findAll().size();
         // set the field null
-        setupCompany.setCompanyCode(null);
-
-        // Create the SetupCompany, which fails.
-
-        restSetupCompanyMockMvc.perform(post("/api/setupCompanys")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(setupCompany)))
-                .andExpect(status().isBadRequest());
-
-        List<SetupCompany> setupCompanys = setupCompanyRepository.findAll();
-        assertThat(setupCompanys).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkNameIsRequired() throws Exception {
-        int databaseSizeBeforeTest = setupCompanyRepository.findAll().size();
-        // set the field null
-        setupCompany.setName(null);
+        setupCompany.setCcode(null);
 
         // Create the SetupCompany, which fails.
 
@@ -227,25 +198,22 @@ public class SetupCompanyResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(setupCompany.getId().intValue())))
-                .andExpect(jsonPath("$.[*].companyCode").value(hasItem(DEFAULT_COMPANY_CODE.toString())))
+                .andExpect(jsonPath("$.[*].ccode").value(hasItem(DEFAULT_CCODE.toString())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
                 .andExpect(jsonPath("$.[*].add1").value(hasItem(DEFAULT_ADD1.toString())))
                 .andExpect(jsonPath("$.[*].add2").value(hasItem(DEFAULT_ADD2.toString())))
-                .andExpect(jsonPath("$.[*].phone1").value(hasItem(DEFAULT_PHONE1.toString())))
-                .andExpect(jsonPath("$.[*].phone2").value(hasItem(DEFAULT_PHONE2.toString())))
+                .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
+                .andExpect(jsonPath("$.[*].mobile").value(hasItem(DEFAULT_MOBILE.toString())))
                 .andExpect(jsonPath("$.[*].fax").value(hasItem(DEFAULT_FAX.toString())))
-                .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
-                .andExpect(jsonPath("$.[*].vatno1").value(hasItem(DEFAULT_VATNO1.toString())))
+                .andExpect(jsonPath("$.[*].vatregno").value(hasItem(DEFAULT_VATREGNO.toString())))
                 .andExpect(jsonPath("$.[*].web").value(hasItem(DEFAULT_WEB.toString())))
+                .andExpect(jsonPath("$.[*].companyLogoContentType").value(hasItem(DEFAULT_COMPANY_LOGO_CONTENT_TYPE)))
+                .andExpect(jsonPath("$.[*].companyLogo").value(hasItem(Base64Utils.encodeToString(DEFAULT_COMPANY_LOGO))))
                 .andExpect(jsonPath("$.[*].tin").value(hasItem(DEFAULT_TIN.toString())))
-                .andExpect(jsonPath("$.[*].csymbol").value(hasItem(DEFAULT_CSYMBOL.toString())))
-                .andExpect(jsonPath("$.[*].secuse").value(hasItem(DEFAULT_SECUSE.toString())))
-                .andExpect(jsonPath("$.[*].bcsymbol").value(hasItem(DEFAULT_BCSYMBOL.toString())))
-                .andExpect(jsonPath("$.[*].cfname").value(hasItem(DEFAULT_CFNAME.toString())))
                 .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
                 .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
                 .andExpect(jsonPath("$.[*].updatedDate").value(hasItem(DEFAULT_UPDATED_DATE.toString())))
-                .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY)))
+                .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
                 .andExpect(jsonPath("$.[*].updatedBy").value(hasItem(DEFAULT_UPDATED_BY)));
     }
 
@@ -260,25 +228,22 @@ public class SetupCompanyResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(setupCompany.getId().intValue()))
-            .andExpect(jsonPath("$.companyCode").value(DEFAULT_COMPANY_CODE.toString()))
+            .andExpect(jsonPath("$.ccode").value(DEFAULT_CCODE.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.add1").value(DEFAULT_ADD1.toString()))
             .andExpect(jsonPath("$.add2").value(DEFAULT_ADD2.toString()))
-            .andExpect(jsonPath("$.phone1").value(DEFAULT_PHONE1.toString()))
-            .andExpect(jsonPath("$.phone2").value(DEFAULT_PHONE2.toString()))
+            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
+            .andExpect(jsonPath("$.mobile").value(DEFAULT_MOBILE.toString()))
             .andExpect(jsonPath("$.fax").value(DEFAULT_FAX.toString()))
-            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
-            .andExpect(jsonPath("$.vatno1").value(DEFAULT_VATNO1.toString()))
+            .andExpect(jsonPath("$.vatregno").value(DEFAULT_VATREGNO.toString()))
             .andExpect(jsonPath("$.web").value(DEFAULT_WEB.toString()))
+            .andExpect(jsonPath("$.companyLogoContentType").value(DEFAULT_COMPANY_LOGO_CONTENT_TYPE))
+            .andExpect(jsonPath("$.companyLogo").value(Base64Utils.encodeToString(DEFAULT_COMPANY_LOGO)))
             .andExpect(jsonPath("$.tin").value(DEFAULT_TIN.toString()))
-            .andExpect(jsonPath("$.csymbol").value(DEFAULT_CSYMBOL.toString()))
-            .andExpect(jsonPath("$.secuse").value(DEFAULT_SECUSE.toString()))
-            .andExpect(jsonPath("$.bcsymbol").value(DEFAULT_BCSYMBOL.toString()))
-            .andExpect(jsonPath("$.cfname").value(DEFAULT_CFNAME.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
             .andExpect(jsonPath("$.updatedDate").value(DEFAULT_UPDATED_DATE.toString()))
-            .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY))
+            .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
             .andExpect(jsonPath("$.updatedBy").value(DEFAULT_UPDATED_BY));
     }
 
@@ -299,21 +264,18 @@ public class SetupCompanyResourceIntTest {
 		int databaseSizeBeforeUpdate = setupCompanyRepository.findAll().size();
 
         // Update the setupCompany
-        setupCompany.setCompanyCode(UPDATED_COMPANY_CODE);
+        setupCompany.setCcode(UPDATED_CCODE);
         setupCompany.setName(UPDATED_NAME);
         setupCompany.setAdd1(UPDATED_ADD1);
         setupCompany.setAdd2(UPDATED_ADD2);
-        setupCompany.setPhone1(UPDATED_PHONE1);
-        setupCompany.setPhone2(UPDATED_PHONE2);
+        setupCompany.setPhone(UPDATED_PHONE);
+        setupCompany.setMobile(UPDATED_MOBILE);
         setupCompany.setFax(UPDATED_FAX);
-        setupCompany.setEmail(UPDATED_EMAIL);
-        setupCompany.setVatno1(UPDATED_VATNO1);
+        setupCompany.setVatregno(UPDATED_VATREGNO);
         setupCompany.setWeb(UPDATED_WEB);
+        setupCompany.setCompanyLogo(UPDATED_COMPANY_LOGO);
+        setupCompany.setCompanyLogoContentType(UPDATED_COMPANY_LOGO_CONTENT_TYPE);
         setupCompany.setTin(UPDATED_TIN);
-        setupCompany.setCsymbol(UPDATED_CSYMBOL);
-        setupCompany.setSecuse(UPDATED_SECUSE);
-        setupCompany.setBcsymbol(UPDATED_BCSYMBOL);
-        setupCompany.setCfname(UPDATED_CFNAME);
         setupCompany.setStatus(UPDATED_STATUS);
         setupCompany.setCreatedDate(UPDATED_CREATED_DATE);
         setupCompany.setUpdatedDate(UPDATED_UPDATED_DATE);
@@ -329,21 +291,18 @@ public class SetupCompanyResourceIntTest {
         List<SetupCompany> setupCompanys = setupCompanyRepository.findAll();
         assertThat(setupCompanys).hasSize(databaseSizeBeforeUpdate);
         SetupCompany testSetupCompany = setupCompanys.get(setupCompanys.size() - 1);
-        assertThat(testSetupCompany.getCompanyCode()).isEqualTo(UPDATED_COMPANY_CODE);
+        assertThat(testSetupCompany.getCcode()).isEqualTo(UPDATED_CCODE);
         assertThat(testSetupCompany.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testSetupCompany.getAdd1()).isEqualTo(UPDATED_ADD1);
         assertThat(testSetupCompany.getAdd2()).isEqualTo(UPDATED_ADD2);
-        assertThat(testSetupCompany.getPhone1()).isEqualTo(UPDATED_PHONE1);
-        assertThat(testSetupCompany.getPhone2()).isEqualTo(UPDATED_PHONE2);
+        assertThat(testSetupCompany.getPhone()).isEqualTo(UPDATED_PHONE);
+        assertThat(testSetupCompany.getMobile()).isEqualTo(UPDATED_MOBILE);
         assertThat(testSetupCompany.getFax()).isEqualTo(UPDATED_FAX);
-        assertThat(testSetupCompany.getEmail()).isEqualTo(UPDATED_EMAIL);
-        assertThat(testSetupCompany.getVatno1()).isEqualTo(UPDATED_VATNO1);
+        assertThat(testSetupCompany.getVatregno()).isEqualTo(UPDATED_VATREGNO);
         assertThat(testSetupCompany.getWeb()).isEqualTo(UPDATED_WEB);
+        assertThat(testSetupCompany.getCompanyLogo()).isEqualTo(UPDATED_COMPANY_LOGO);
+        assertThat(testSetupCompany.getCompanyLogoContentType()).isEqualTo(UPDATED_COMPANY_LOGO_CONTENT_TYPE);
         assertThat(testSetupCompany.getTin()).isEqualTo(UPDATED_TIN);
-        assertThat(testSetupCompany.getCsymbol()).isEqualTo(UPDATED_CSYMBOL);
-        assertThat(testSetupCompany.getSecuse()).isEqualTo(UPDATED_SECUSE);
-        assertThat(testSetupCompany.getBcsymbol()).isEqualTo(UPDATED_BCSYMBOL);
-        assertThat(testSetupCompany.getCfname()).isEqualTo(UPDATED_CFNAME);
         assertThat(testSetupCompany.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testSetupCompany.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testSetupCompany.getUpdatedDate()).isEqualTo(UPDATED_UPDATED_DATE);

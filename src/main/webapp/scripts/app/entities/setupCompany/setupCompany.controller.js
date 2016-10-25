@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pmsApp')
-    .controller('SetupCompanyController', function ($scope, $state, SetupCompany, SetupCompanySearch, ParseLinks) {
+    .controller('SetupCompanyController', function ($scope, $state, DataUtils, SetupCompany, SetupCompanySearch, ParseLinks) {
 
         $scope.setupCompanys = [];
         $scope.predicate = 'id';
@@ -38,21 +38,18 @@ angular.module('pmsApp')
 
         $scope.clear = function () {
             $scope.setupCompany = {
-                companyCode: null,
+                ccode: null,
                 name: null,
                 add1: null,
                 add2: null,
-                phone1: null,
-                phone2: null,
+                phone: null,
+                mobile: null,
                 fax: null,
-                email: null,
-                vatno1: null,
+                vatregno: null,
                 web: null,
+                companyLogo: null,
+                companyLogoContentType: null,
                 tin: null,
-                csymbol: null,
-                secuse: null,
-                bcsymbol: null,
-                cfname: null,
                 status: null,
                 createdDate: null,
                 updatedDate: null,
@@ -61,4 +58,8 @@ angular.module('pmsApp')
                 id: null
             };
         };
+
+        $scope.abbreviate = DataUtils.abbreviate;
+
+        $scope.byteSize = DataUtils.byteSize;
     });

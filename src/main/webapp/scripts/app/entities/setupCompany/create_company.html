@@ -1,0 +1,116 @@
+<div class="row">
+<div class="col-sm-4"></div>
+<div class="col-sm-8">
+    <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+            <jh-alert-error></jh-alert-error>
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_ccode">Company Code</label>
+                <input type="text" class="form-control" name="ccode" id="field_ccode"
+                       ng-model="setupCompany.ccode"
+                       required ng-maxlength="100" />
+                <div ng-show="editForm.ccode.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.ccode.$error.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block"
+                       ng-show="editForm.ccode.$error.maxlength" translate-value-max="100">
+                        This field cannot be longer than 100 characters.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_name">Company Name</label>
+                <input type="text" class="form-control" name="name" id="field_name"
+                       ng-model="setupCompany.name"
+                    />
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_add1">Address 1</label>
+                <input type="text" class="form-control" name="add1" id="field_add1"
+                       ng-model="setupCompany.add1"
+                    />
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_add2">Address 2</label>
+                <input type="text" class="form-control" name="add2" id="field_add2"
+                       ng-model="setupCompany.add2"
+                    />
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_phone">Phone Number</label>
+                <input type="text" class="form-control" name="phone" id="field_phone"
+                       ng-model="setupCompany.phone"
+                    />
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_mobile">Mobile Number</label>
+                <input type="text" class="form-control" name="mobile" id="field_mobile"
+                       ng-model="setupCompany.mobile"
+                    />
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_fax">Fax Number</label>
+                <input type="text" class="form-control" name="fax" id="field_fax"
+                       ng-model="setupCompany.fax"
+                    />
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_vatregno">Vat Registration Number</label>
+                <input type="text" class="form-control" name="vatregno" id="field_vatregno"
+                       ng-model="setupCompany.vatregno"
+                    />
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_web">Web Address</label>
+                <input type="text" class="form-control" name="web" id="field_web"
+                       ng-model="setupCompany.web"
+                    />
+            </div>
+            <div class="form-group col-sm-6" ngf-drop ngf-change="setCompanyLogo($file, setupCompany)">
+                <label class="control-label" for="field_companyLogo">Company Logo</label>
+                <div>
+                    <div class="help-block clearfix">
+                        <span class="pull-left">{{setupCompany.companyLogoContentType}} {{byteSize(setupCompany.companyLogo)}}</span>
+                        <button ng-click="setupCompany.companyLogo=null;setupCompany.companyLogoContentType=null;"
+                                ng-if="setupCompany.companyLogo"
+                                class="btn btn-default btn-xs pull-right">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+                    <button type="file" ngf-select class="btn btn-default btn-block"
+                            ngf-change="setCompanyLogo($file, setupCompany)">
+                        Add blob
+                    </button>
+                </div>
+                <input type="hidden" class="form-control" name="companyLogo" id="field_companyLogo"
+                       ng-model="setupCompany.companyLogo"
+                    />
+                <input type="hidden" class="form-control" name="companyLogoContentType" id="field_companyLogoContentType"
+                       ng-model="setupCompany.companyLogoContentType" />
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label" for="field_tin">Tin Number</label>
+                <input type="text" class="form-control" name="tin" id="field_tin"
+                       ng-model="setupCompany.tin"
+                    />
+            </div>
+
+            <!--<div class="form-group col-sm-6">-->
+                <!--<label for="field_user">user</label>-->
+                <!--<select class="form-control" id="field_user" name="user" ng-model="setupCompany.user" ng-options="user as user.login for user in users track by user.id">-->
+                    <!--<option value=""></option>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--<div class="modal-footer">-->
+            <!--<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">-->
+                <!--<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>-->
+            <!--</button>-->
+            <!--<button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">-->
+                <!--<span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>-->
+            <!--</button>-->
+        <!--</div>-->
+    </form>
+
+</div>
+</div>

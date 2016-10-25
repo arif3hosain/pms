@@ -12,10 +12,10 @@
             <tbody>
             <tr>
                 <td>
-                    <span>CompanyCode</span>
+                    <span>Ccode</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{setupCompany.companyCode}}</span>
+                    <span class="form-control-static">{{setupCompany.ccode}}</span>
                 </td>
             </tr>
             <tr>
@@ -44,18 +44,18 @@
             </tr>
             <tr>
                 <td>
-                    <span>Phone1</span>
+                    <span>Phone</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{setupCompany.phone1}}</span>
+                    <span class="form-control-static">{{setupCompany.phone}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>Phone2</span>
+                    <span>Mobile</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{setupCompany.phone2}}</span>
+                    <span class="form-control-static">{{setupCompany.mobile}}</span>
                 </td>
             </tr>
             <tr>
@@ -68,18 +68,10 @@
             </tr>
             <tr>
                 <td>
-                    <span>Email</span>
+                    <span>Vatregno</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{setupCompany.email}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Vatno1</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{setupCompany.vatno1}}</span>
+                    <span class="form-control-static">{{setupCompany.vatregno}}</span>
                 </td>
             </tr>
             <tr>
@@ -92,6 +84,15 @@
             </tr>
             <tr>
                 <td>
+                    <span>CompanyLogo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.companyLogo}}</span>
+                    <div>{{setupCompany.companyLogoContentType}}  {{byteSize(setupCompany.companyLogo)}}</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <span>Tin</span>
                 </td>
                 <td>
@@ -100,76 +101,52 @@
             </tr>
             <tr>
                 <td>
-                    <span>Csymbol</span>
+                    <span>Status</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{setupCompany.csymbol}}</span>
+                    <span class="form-control-static">{{setupCompany.status}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>Secuse</span>
+                    <span>CreatedDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{setupCompany.secuse}}</span>
+                    <span class="form-control-static">{{setupCompany.createdDate | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>Bcsymbol</span>
+                    <span>UpdatedDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{setupCompany.bcsymbol}}</span>
+                    <span class="form-control-static">{{setupCompany.updatedDate | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>Cfname</span>
+                    <span>CreatedBy</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{setupCompany.cfname}}</span>
+                    <span class="form-control-static">{{setupCompany.createdBy}}</span>
                 </td>
             </tr>
-            <!--<tr>-->
-                <!--<td>-->
-                    <!--<span>Status</span>-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--<span class="form-control-static">{{setupCompany.status}}</span>-->
-                <!--</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td>-->
-                    <!--<span>CreatedDate</span>-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--<span class="form-control-static">{{setupCompany.createdDate | date:'mediumDate'}}</span>-->
-                <!--</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td>-->
-                    <!--<span>UpdatedDate</span>-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--<span class="form-control-static">{{setupCompany.updatedDate | date:'mediumDate'}}</span>-->
-                <!--</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td>-->
-                    <!--<span>CreatedBy</span>-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--<span class="form-control-static">{{setupCompany.createdBy}}</span>-->
-                <!--</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td>-->
-                    <!--<span>UpdatedBy</span>-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--<span class="form-control-static">{{setupCompany.updatedBy}}</span>-->
-                <!--</td>-->
-            <!--</tr>-->
+            <tr>
+                <td>
+                    <span>UpdatedBy</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.updatedBy}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>user</span>
+                </td>
+                <td>
+                    {{setupCompany.user.login}}
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

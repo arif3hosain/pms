@@ -8,6 +8,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -24,11 +26,11 @@ public class SetupCompany implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "company_code", nullable = false)
-    private String companyCode;
+    @Size(max = 100)
+    @Column(name = "ccode", length = 100, nullable = false)
+    private String ccode;
 
-    @NotNull
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
     @Column(name = "add1")
@@ -37,38 +39,28 @@ public class SetupCompany implements Serializable {
     @Column(name = "add2")
     private String add2;
 
-    @Column(name = "phone1")
-    private String phone1;
+    @Column(name = "phone")
+    private String phone;
 
-    @Column(name = "phone2")
-    private String phone2;
+    @Column(name = "mobile")
+    private String mobile;
 
     @Column(name = "fax")
     private String fax;
 
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "vatno1")
-    private String vatno1;
+    @Column(name = "vatregno")
+    private String vatregno;
 
     @Column(name = "web")
     private String web;
 
+    @Lob
+    @Column(name = "company_logo")
+    private byte[] companyLogo;
+
+    @Column(name = "company_logo_content_type")        private String companyLogoContentType;
     @Column(name = "tin")
     private String tin;
-
-    @Column(name = "csymbol")
-    private String csymbol;
-
-    @Column(name = "secuse")
-    private String secuse;
-
-    @Column(name = "bcsymbol")
-    private String bcsymbol;
-
-    @Column(name = "cfname")
-    private String cfname;
 
     @Column(name = "status")
     private Integer status;
@@ -80,10 +72,13 @@ public class SetupCompany implements Serializable {
     private LocalDate updatedDate;
 
     @Column(name = "created_by")
-    private Integer createdBy;
+    private String createdBy;
 
     @Column(name = "updated_by")
     private Integer updatedBy;
+
+    @OneToOne
+    private User user;
 
     public Long getId() {
         return id;
@@ -93,12 +88,12 @@ public class SetupCompany implements Serializable {
         this.id = id;
     }
 
-    public String getCompanyCode() {
-        return companyCode;
+    public String getCcode() {
+        return ccode;
     }
 
-    public void setCompanyCode(String companyCode) {
-        this.companyCode = companyCode;
+    public void setCcode(String ccode) {
+        this.ccode = ccode;
     }
 
     public String getName() {
@@ -125,20 +120,20 @@ public class SetupCompany implements Serializable {
         this.add2 = add2;
     }
 
-    public String getPhone1() {
-        return phone1;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhone1(String phone1) {
-        this.phone1 = phone1;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getPhone2() {
-        return phone2;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setPhone2(String phone2) {
-        this.phone2 = phone2;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getFax() {
@@ -149,20 +144,12 @@ public class SetupCompany implements Serializable {
         this.fax = fax;
     }
 
-    public String getEmail() {
-        return email;
+    public String getVatregno() {
+        return vatregno;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getVatno1() {
-        return vatno1;
-    }
-
-    public void setVatno1(String vatno1) {
-        this.vatno1 = vatno1;
+    public void setVatregno(String vatregno) {
+        this.vatregno = vatregno;
     }
 
     public String getWeb() {
@@ -173,44 +160,28 @@ public class SetupCompany implements Serializable {
         this.web = web;
     }
 
+    public byte[] getCompanyLogo() {
+        return companyLogo;
+    }
+
+    public void setCompanyLogo(byte[] companyLogo) {
+        this.companyLogo = companyLogo;
+    }
+
+    public String getCompanyLogoContentType() {
+        return companyLogoContentType;
+    }
+
+    public void setCompanyLogoContentType(String companyLogoContentType) {
+        this.companyLogoContentType = companyLogoContentType;
+    }
+
     public String getTin() {
         return tin;
     }
 
     public void setTin(String tin) {
         this.tin = tin;
-    }
-
-    public String getCsymbol() {
-        return csymbol;
-    }
-
-    public void setCsymbol(String csymbol) {
-        this.csymbol = csymbol;
-    }
-
-    public String getSecuse() {
-        return secuse;
-    }
-
-    public void setSecuse(String secuse) {
-        this.secuse = secuse;
-    }
-
-    public String getBcsymbol() {
-        return bcsymbol;
-    }
-
-    public void setBcsymbol(String bcsymbol) {
-        this.bcsymbol = bcsymbol;
-    }
-
-    public String getCfname() {
-        return cfname;
-    }
-
-    public void setCfname(String cfname) {
-        this.cfname = cfname;
     }
 
     public Integer getStatus() {
@@ -237,11 +208,11 @@ public class SetupCompany implements Serializable {
         this.updatedDate = updatedDate;
     }
 
-    public Integer getCreatedBy() {
+    public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -251,6 +222,14 @@ public class SetupCompany implements Serializable {
 
     public void setUpdatedBy(Integer updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -274,21 +253,18 @@ public class SetupCompany implements Serializable {
     public String toString() {
         return "SetupCompany{" +
             "id=" + id +
-            ", companyCode='" + companyCode + "'" +
+            ", ccode='" + ccode + "'" +
             ", name='" + name + "'" +
             ", add1='" + add1 + "'" +
             ", add2='" + add2 + "'" +
-            ", phone1='" + phone1 + "'" +
-            ", phone2='" + phone2 + "'" +
+            ", phone='" + phone + "'" +
+            ", mobile='" + mobile + "'" +
             ", fax='" + fax + "'" +
-            ", email='" + email + "'" +
-            ", vatno1='" + vatno1 + "'" +
+            ", vatregno='" + vatregno + "'" +
             ", web='" + web + "'" +
+            ", companyLogo='" + companyLogo + "'" +
+            ", companyLogoContentType='" + companyLogoContentType + "'" +
             ", tin='" + tin + "'" +
-            ", csymbol='" + csymbol + "'" +
-            ", secuse='" + secuse + "'" +
-            ", bcsymbol='" + bcsymbol + "'" +
-            ", cfname='" + cfname + "'" +
             ", status='" + status + "'" +
             ", createdDate='" + createdDate + "'" +
             ", updatedDate='" + updatedDate + "'" +

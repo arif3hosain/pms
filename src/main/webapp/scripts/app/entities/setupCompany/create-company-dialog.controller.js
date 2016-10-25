@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('pmsApp').controller('SetupCompanyDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', '$q', 'DataUtils', 'entity', 'SetupCompany', 'User',
-        function($scope, $stateParams, $uibModalInstance, $q, DataUtils, entity, SetupCompany, User) {
+angular.module('pmsApp').controller('CreateCompany',
+    ['$scope', '$stateParams',  '$q', 'DataUtils', 'entity', 'SetupCompany', 'User',
+        function($scope, $stateParams, $q, DataUtils, entity, SetupCompany, User) {
 
         $scope.setupCompany = entity;
         $scope.users = User.query();
@@ -14,7 +14,6 @@ angular.module('pmsApp').controller('SetupCompanyDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('pmsApp:setupCompanyUpdate', result);
-            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -30,11 +29,6 @@ angular.module('pmsApp').controller('SetupCompanyDialogController',
                 SetupCompany.save($scope.setupCompany, onSaveSuccess, onSaveError);
             }
         };
-
-        $scope.clear = function() {
-            $uibModalInstance.dismiss('cancel');
-        };
-
         $scope.abbreviate = DataUtils.abbreviate;
 
         $scope.byteSize = DataUtils.byteSize;

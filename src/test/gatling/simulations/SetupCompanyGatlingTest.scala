@@ -67,7 +67,7 @@ class SetupCompanyGatlingTest extends Simulation {
             .exec(http("Create new setupCompany")
             .post("/api/setupCompanys")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "companyCode":"SAMPLE_TEXT", "name":"SAMPLE_TEXT", "add1":"SAMPLE_TEXT", "add2":"SAMPLE_TEXT", "phone1":"SAMPLE_TEXT", "phone2":"SAMPLE_TEXT", "fax":"SAMPLE_TEXT", "email":"SAMPLE_TEXT", "vatno1":"SAMPLE_TEXT", "web":"SAMPLE_TEXT", "tin":"SAMPLE_TEXT", "csymbol":"SAMPLE_TEXT", "secuse":"SAMPLE_TEXT", "bcsymbol":"SAMPLE_TEXT", "cfname":"SAMPLE_TEXT", "status":"0", "createdDate":"2020-01-01T00:00:00.000Z", "updatedDate":"2020-01-01T00:00:00.000Z", "createdBy":"0", "updatedBy":"0"}""")).asJSON
+            .body(StringBody("""{"id":null, "ccode":"SAMPLE_TEXT", "name":"SAMPLE_TEXT", "add1":"SAMPLE_TEXT", "add2":"SAMPLE_TEXT", "phone":"SAMPLE_TEXT", "mobile":"SAMPLE_TEXT", "fax":"SAMPLE_TEXT", "vatregno":"SAMPLE_TEXT", "web":"SAMPLE_TEXT", "companyLogo":null, "tin":"SAMPLE_TEXT", "status":"0", "createdDate":"2020-01-01T00:00:00.000Z", "updatedDate":"2020-01-01T00:00:00.000Z", "createdBy":"SAMPLE_TEXT", "updatedBy":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_setupCompany_url")))
             .pause(10)

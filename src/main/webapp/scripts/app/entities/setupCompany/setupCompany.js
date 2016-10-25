@@ -52,21 +52,18 @@ angular.module('pmsApp')
                         resolve: {
                             entity: function () {
                                 return {
-                                    companyCode: null,
+                                    ccode: null,
                                     name: null,
                                     add1: null,
                                     add2: null,
-                                    phone1: null,
-                                    phone2: null,
+                                    phone: null,
+                                    mobile: null,
                                     fax: null,
-                                    email: null,
-                                    vatno1: null,
+                                    vatregno: null,
                                     web: null,
+                                    companyLogo: null,
+                                    companyLogoContentType: null,
                                     tin: null,
-                                    csymbol: null,
-                                    secuse: null,
-                                    bcsymbol: null,
-                                    cfname: null,
                                     status: null,
                                     createdDate: null,
                                     updatedDate: null,
@@ -128,5 +125,27 @@ angular.module('pmsApp')
                         $state.go('^');
                     })
                 }]
-            });
-    });
+            }).state('setupCompany.create', {
+                    parent: 'setupCompany',
+                    url: '/createCompany',
+                    data: {
+                        authorities: ['ROLE_USER'],
+                        pageTitle: 'Welcome to New Company Setup'
+                    },
+                    views: {
+                        'content@': {
+                            templateUrl: 'scripts/app/entities/setupCompany/create_company.html',
+                            controller: 'CreateCompany'
+                        }
+                    },
+                    resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            $translatePartialLoader.addPart('setupCompany');
+                            return $translate.refresh();
+                        }],
+                        entity: ['$stateParams', 'setupCompany', function($stateParams, SetupCompany) {
+                            return SetupCompany;
+                        }]
+                    }
+                });
+           });
