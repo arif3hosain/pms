@@ -78,6 +78,7 @@ public class SetupCompany implements Serializable {
     private Integer updatedBy;
 
     @OneToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne

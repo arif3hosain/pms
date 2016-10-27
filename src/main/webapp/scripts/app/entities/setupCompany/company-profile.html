@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="col-md-3">
+        <ng-include src="'scripts/app/entities/setupCompany/left-menu.html'"></ng-include>
+    </div>
+    <div class="col-md-9">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Company Code</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.ccode}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Company Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Address 1</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.add1}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Address 2</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.add2}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Phone Number</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.phone}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Mobile Number</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.mobile}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Fax Code</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.fax}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Vat Number</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.vatregno}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Web Address </span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.web}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Company Logo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.companyLogo}}</span>
+                    <div>{{setupCompany.companyLogoContentType}}  {{byteSize(setupCompany.companyLogo)}}</div>
+                </td>
+            </tr>
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>Tin Number</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupCompany.tin}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <tr>
+                <td>
+                    <span>Active Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupCompany.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>country</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="country.detail({id:setupCompany.country.id})">{{setupCompany.country.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

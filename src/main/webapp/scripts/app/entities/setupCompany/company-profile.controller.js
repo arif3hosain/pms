@@ -1,29 +1,21 @@
 'use strict';
 
-angular.module('pmsApp').controller('SetupCompanyDialogController',
-    ['$scope', '$stateParams','$state',  '$q', 'DataUtils',  'SetupCompany', 'User', 'Country','Auth', 'Principal',
-        function($scope, $stateParams,$state,  $q, DataUtils,  SetupCompany, User, Country,Auth, Principal) {
+angular.module('pmsApp').controller('CompanyProfileController',
+    ['$scope', '$stateParams',  '$q', 'DataUtils',  'SetupCompany', 'User', 'Country',
+        function($scope, $stateParams,  $q, DataUtils,  SetupCompany, User, Country) {
 
 //        $scope.setupCompany = entity;
         $scope.users = User.query();
-        console.log($scope.users);
         $scope.countrys = Country.query({size:500});
         $scope.load = function(id) {
             SetupCompany.get({id : id}, function(result) {
                 $scope.setupCompany = result;
             });
         };
-          $scope.username=null;
-          Principal.identity().then(function(account) {
-                $scope.account = account;
-                $scope.username=account.login;
-                console.log($scope.username+' into');
-            });
-            console.log($scope.username+' outto');
 
         var onSaveSuccess = function (result) {
             $scope.$emit('pmsApp:setupCompanyUpdate', result);
-            $state.go('setupCompany.companyProfile', null, {reload: true});
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 

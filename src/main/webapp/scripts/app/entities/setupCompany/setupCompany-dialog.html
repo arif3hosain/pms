@@ -39,18 +39,7 @@
                            ng-model="setupCompany.name"
                         />
                 </div>
-                <div class="form-group col-sm-6">
-                    <label class="control-label" for="field_add1">Address 1</label>
-                    <input type="text" class="form-control" name="add1" id="field_add1"
-                           ng-model="setupCompany.add1"
-                        />
-                </div>
-                <div class="form-group col-sm-6">
-                    <label class="control-label" for="field_add2">Address 2</label>
-                    <input type="text" class="form-control" name="add2" id="field_add2"
-                           ng-model="setupCompany.add2"
-                        />
-                </div>
+
                 <div class="form-group col-sm-6">
                     <label class="control-label" for="field_phone">Phone Number</label>
                     <input type="text" class="form-control" name="phone" id="field_phone"
@@ -79,6 +68,18 @@
                     <label class="control-label" for="field_web">Web Address</label>
                     <input type="text" class="form-control" name="web" id="field_web"
                            ng-model="setupCompany.web"
+                        />
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="control-label" for="field_add1">Address 1</label>
+                    <input type="text" class="form-control" name="add1" id="field_add1"
+                           ng-model="setupCompany.add1"
+                        />
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="control-label" for="field_add2">Address 2</label>
+                    <input type="text" class="form-control" name="add2" id="field_add2"
+                           ng-model="setupCompany.add2"
                         />
                 </div>
                 <!--<div class="form-group" ngf-drop ngf-change="setCompanyLogo($file, setupCompany)">-->
@@ -144,12 +145,12 @@
                         <!--/>-->
                 <!--</div>-->
 
-                <!--<div class="form-group">-->
-                    <!--<label for="field_user">user</label>-->
-                    <!--<select class="form-control" id="field_user" name="user" ng-model="setupCompany.user" ng-options="user as user.login for user in users track by user.id">-->
-                        <!--<option value=""></option>-->
-                    <!--</select>-->
-                <!--</div>-->
+                <div class="form-group col-sm-6">
+                    <label for="field_user">user</label>
+                    <select class="form-control" id="field_user" name="user" ng-model="setupCompany.user" ng-options="user as user.login for user in users track by user.id">
+                        <option value=""></option>
+                    </select>
+                </div>
                 <div class="form-group col-sm-6">
                     <label for="field_country">country</label>
                     <select class="form-control" id="field_country" name="country" ng-model="setupCompany.country" ng-options="country as country.name for country in countrys track by country.id">
