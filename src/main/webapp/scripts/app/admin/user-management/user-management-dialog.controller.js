@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('pmsApp').controller('UserManagementDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'User', 
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'User',
         function($scope, $stateParams, $uibModalInstance, entity, User) {
 
         $scope.user = entity;
-        $scope.authorities = ["ROLE_USER", "ROLE_ADMIN"];
+        $scope.authorities = ["ROLE_USER", "ROLE_ADMIN","ROLE_SUPER_ADMIN","ROLE_MANAGER","ROLE_COMPANY","ROLE_TEAM_LEADER","ROLE_TEAM_MEMBER"];
         var onSaveSuccess = function (result) {
             $scope.isSaving = false;
             $uibModalInstance.close(result);

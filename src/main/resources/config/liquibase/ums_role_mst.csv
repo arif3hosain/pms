@@ -3,3 +3,8 @@ id,role_name,role_desc,status
 2,ROLE_ADMIN,Access all type of actions,1
 3,ROLE_USER,Access some type of actions,1
 4,ROLE_MANAGER,Access some type of actions,1
+5,ROLE_COMPANY,Access some type of actions,1
+6,ROLE_TEAM_LEADER,Access some type of actions,1
+7,ROLE_TEAM_MEMBER,Access some type of actions,1
+
+
