@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('pmsApp').controller('SetupCompanyDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', '$q', 'DataUtils', 'entity', 'SetupCompany', 'User',
-        function($scope, $stateParams, $uibModalInstance, $q, DataUtils, entity, SetupCompany, User) {
+    ['$scope', '$stateParams', '$uibModalInstance', '$q', 'DataUtils', 'entity', 'SetupCompany', 'User', 'Country',
+        function($scope, $stateParams, $uibModalInstance, $q, DataUtils, entity, SetupCompany, User, Country) {
 
         $scope.setupCompany = entity;
         $scope.users = User.query();
+        $scope.countrys = Country.query();
         $scope.load = function(id) {
             SetupCompany.get({id : id}, function(result) {
                 $scope.setupCompany = result;

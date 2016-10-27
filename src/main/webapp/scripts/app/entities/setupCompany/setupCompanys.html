@@ -1,19 +1,18 @@
 <div>
-    <h2>SetupCompanys</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-primary" ui-sref="setupCompany.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new SetupCompany</span>
-                </button>
+                <!--<button class="btn btn-primary" ui-sref="setupCompany.new">-->
+                    <!--<span class="glyphicon glyphicon-flash"></span> <span>Create a new SetupCompany</span>-->
+                <!--</button>-->
             </div>
             <div class="col-md-8">
                 <form name="searchForm" class="form-inline">
                     <div class="form-group">
-                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="Search">
                     </div>
-                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a SetupCompany</span>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search</span>
                     </button>
                 </form>
             </div>
@@ -24,48 +23,52 @@
         <table class="table table-striped">
             <thead>
                 <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
-                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="ccode"><span>Ccode</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="add1"><span>Add1</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="add2"><span>Add2</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="phone"><span>Phone</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="mobile"><span>Mobile</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="ccode"><span>Company Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Company Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="add1"><span>Add1</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="add2"><span>Add2</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="phone"><span>Phone Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mobile"><span>Mobile Number</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="fax"><span>Fax</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="vatregno"><span>Vatregno</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="web"><span>Web</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="companyLogo"><span>CompanyLogo</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="tin"><span>Tin</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="createdDate"><span>CreatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updatedDate"><span>UpdatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="createdBy"><span>CreatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="updatedBy"><span>UpdatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="user.login"><span>user</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th></th>
+                    <!--<th jh-sort-by="vatregno"><span>Vatregno</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="web"><span>Web</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="companyLogo"><span>CompanyLogo</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="tin"><span>Tin Number</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="createdDate"><span>CreatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="updatedDate"><span>UpdatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="createdBy"><span>CreatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="updatedBy"><span>UpdatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="user.login"><span>user</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="country.name"><span>Country</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="setupCompany in setupCompanys track by setupCompany.id">
-                    <td><a ui-sref="setupCompany.detail({id:setupCompany.id})">{{setupCompany.id}}</a></td>
+                    <!--<td><a ui-sref="setupCompany.detail({id:setupCompany.id})">{{setupCompany.id}}</a></td>-->
                     <td>{{setupCompany.ccode}}</td>
                     <td>{{setupCompany.name}}</td>
-                    <td>{{setupCompany.add1}}</td>
-                    <td>{{setupCompany.add2}}</td>
+                    <!--<td>{{setupCompany.add1}}</td>-->
+                    <!--<td>{{setupCompany.add2}}</td>-->
                     <td>{{setupCompany.phone}}</td>
                     <td>{{setupCompany.mobile}}</td>
                     <td>{{setupCompany.fax}}</td>
-                    <td>{{setupCompany.vatregno}}</td>
-                    <td>{{setupCompany.web}}</td>
-                    <td>{{setupCompany.companyLogo}}</td>
+                    <!--<td>{{setupCompany.vatregno}}</td>-->
+                    <!--<td>{{setupCompany.web}}</td>-->
+                    <!--<td>{{setupCompany.companyLogo}}</td>-->
                     <td>{{setupCompany.tin}}</td>
-                    <td>{{setupCompany.status}}</td>
-                        <td>{{setupCompany.createdDate | date:'mediumDate'}}</td>
-                        <td>{{setupCompany.updatedDate | date:'mediumDate'}}</td>
-                    <td>{{setupCompany.createdBy}}</td>
-                    <td>{{setupCompany.updatedBy}}</td>
+                    <!--<td>{{setupCompany.status}}</td>-->
+                        <!--<td>{{setupCompany.createdDate | date:'mediumDate'}}</td>-->
+                        <!--<td>{{setupCompany.updatedDate | date:'mediumDate'}}</td>-->
+                    <!--<td>{{setupCompany.createdBy}}</td>-->
+                    <!--<td>{{setupCompany.updatedBy}}</td>-->
+                    <!--<td>-->
+                        <!--{{setupCompany.user.login}}-->
+                    <!--</td>-->
                     <td>
-                        {{setupCompany.user.login}}
+                        <a ui-sref="country.detail({id:setupCompany.country.id})">{{setupCompany.country.name}}</a>
                     </td>
                     <td>
                         <button type="submit"

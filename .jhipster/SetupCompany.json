@@ -7,6 +7,13 @@
             "relationshipType": "one-to-one",
             "otherEntityField": "login",
             "ownerSide": true
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "country",
+            "otherEntityName": "country",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
         }
     ],
     "fields": [
@@ -97,7 +104,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20161023052101",
+    "changelogDate": "20161026052106",
     "dto": "no",
     "pagination": "pagination"
 }

@@ -129,12 +129,12 @@ angular.module('pmsApp')
                     parent: 'setupCompany',
                     url: '/createCompany',
                     data: {
-                        authorities: ['ROLE_USER'],
+                        authorities: ['ROLE_ADMIN'],
                         pageTitle: 'Welcome to New Company Setup'
                     },
                     views: {
                         'content@': {
-                            templateUrl: 'scripts/app/entities/setupCompany/create_company.html',
+                            templateUrl: 'scripts/app/entities/setupCompany/Test.html',
                             controller: 'CreateCompany'
                         }
                     },

@@ -107,44 +107,52 @@
                     <span class="form-control-static">{{setupCompany.status}}</span>
                 </td>
             </tr>
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>CreatedDate</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupCompany.createdDate | date:'mediumDate'}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>UpdatedDate</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupCompany.updatedDate | date:'mediumDate'}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>CreatedBy</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupCompany.createdBy}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>UpdatedBy</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupCompany.updatedBy}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>user</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--{{setupCompany.user.login}}-->
+                <!--</td>-->
+            <!--</tr>-->
             <tr>
                 <td>
-                    <span>CreatedDate</span>
+                    <span>country</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{setupCompany.createdDate | date:'mediumDate'}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>UpdatedDate</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{setupCompany.updatedDate | date:'mediumDate'}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>CreatedBy</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{setupCompany.createdBy}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>UpdatedBy</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{setupCompany.updatedBy}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>user</span>
-                </td>
-                <td>
-                    {{setupCompany.user.login}}
+                    <a class="form-control-static" ui-sref="country.detail({id:setupCompany.country.id})">{{setupCompany.country.name}}</a>
                 </td>
             </tr>
             </tbody>

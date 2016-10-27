@@ -2,17 +2,15 @@
 
 describe('Controller Tests', function() {
 
-    describe('SetupCompany Detail Controller', function() {
+    describe('Country Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockSetupCompany, MockUser, MockCountry;
+        var MockEntity, MockCountry;
         var createController;
 
         beforeEach(inject(function($injector) {
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
-            MockSetupCompany = jasmine.createSpy('MockSetupCompany');
-            MockUser = jasmine.createSpy('MockUser');
             MockCountry = jasmine.createSpy('MockCountry');
             
 
@@ -20,19 +18,17 @@ describe('Controller Tests', function() {
                 '$scope': $scope,
                 '$rootScope': $rootScope,
                 'entity': MockEntity ,
-                'SetupCompany': MockSetupCompany,
-                'User': MockUser,
                 'Country': MockCountry
             };
             createController = function() {
-                $injector.get('$controller')("SetupCompanyDetailController", locals);
+                $injector.get('$controller')("CountryDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'pmsApp:setupCompanyUpdate';
+                var eventType = 'pmsApp:countryUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

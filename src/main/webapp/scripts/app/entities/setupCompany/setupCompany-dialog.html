@@ -1,158 +1,174 @@
-
-<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
-
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="mySetupCompanyLabel">Create or edit a SetupCompany</h4>
+<div class="row">
+    <div class="col-md-3">
+        <ng-include src="'scripts/app/entities/setupCompany/left-menu.html'"></ng-include>
     </div>
-    <div class="modal-body">
-        <jh-alert-error></jh-alert-error>
-        <div class="form-group">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="setupCompany.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_ccode">Ccode</label>
-            <input type="text" class="form-control" name="ccode" id="field_ccode"
-                    ng-model="setupCompany.ccode"
-                    required ng-maxlength="100" />
-            <div ng-show="editForm.ccode.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.ccode.$error.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.ccode.$error.maxlength" translate-value-max="100">
-                    This field cannot be longer than 100 characters.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                    ng-model="setupCompany.name"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_add1">Add1</label>
-            <input type="text" class="form-control" name="add1" id="field_add1"
-                    ng-model="setupCompany.add1"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_add2">Add2</label>
-            <input type="text" class="form-control" name="add2" id="field_add2"
-                    ng-model="setupCompany.add2"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_phone">Phone</label>
-            <input type="text" class="form-control" name="phone" id="field_phone"
-                    ng-model="setupCompany.phone"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_mobile">Mobile</label>
-            <input type="text" class="form-control" name="mobile" id="field_mobile"
-                    ng-model="setupCompany.mobile"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_fax">Fax</label>
-            <input type="text" class="form-control" name="fax" id="field_fax"
-                    ng-model="setupCompany.fax"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_vatregno">Vatregno</label>
-            <input type="text" class="form-control" name="vatregno" id="field_vatregno"
-                    ng-model="setupCompany.vatregno"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_web">Web</label>
-            <input type="text" class="form-control" name="web" id="field_web"
-                    ng-model="setupCompany.web"
-                     />
-        </div>
-        <div class="form-group" ngf-drop ngf-change="setCompanyLogo($file, setupCompany)">
-            <label class="control-label" for="field_companyLogo">CompanyLogo</label>
-            <div>
-                <div class="help-block clearfix">
-                    <span class="pull-left">{{setupCompany.companyLogoContentType}} {{byteSize(setupCompany.companyLogo)}}</span>
-                    <button ng-click="setupCompany.companyLogo=null;setupCompany.companyLogoContentType=null;"
-                            ng-if="setupCompany.companyLogo"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
+    <div class="col-md-9">
+
+        <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+            <!--<div class="modal-header">-->
+                <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true"-->
+                        <!--ng-click="clear()">&times;</button>-->
+                <!--<h4 class="modal-title" id="mySetupCompanyLabel">Create or edit a SetupCompany</h4>-->
+            <!--</div>-->
+            <div class="modal-body">
+                <jh-alert-error></jh-alert-error>
+                <!--<div class="form-group">-->
+                    <!--<label for="id">ID</label>-->
+                    <!--<input type="text" class="form-control" id="id" name="id"-->
+                           <!--ng-model="setupCompany.id" readonly />-->
+                <!--</div>-->
+                <div class="form-group col-sm-6">
+                    <label class="control-label" for="field_ccode">Company Code</label>
+                    <input type="text" class="form-control" name="ccode" id="field_ccode"
+                           ng-model="setupCompany.ccode"
+                           required ng-maxlength="100" />
+                    <div ng-show="editForm.ccode.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.ccode.$error.required">
+                            This field is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="editForm.ccode.$error.maxlength" translate-value-max="100">
+                            This field cannot be longer than 100 characters.
+                        </p>
+                    </div>
                 </div>
-                <button type="file" ngf-select class="btn btn-default btn-block"
-                        ngf-change="setCompanyLogo($file, setupCompany)">
-                    Add blob
+                <div class="form-group col-sm-6">
+                    <label class="control-label" for="field_name">Company Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           ng-model="setupCompany.name"
+                        />
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="control-label" for="field_add1">Address 1</label>
+                    <input type="text" class="form-control" name="add1" id="field_add1"
+                           ng-model="setupCompany.add1"
+                        />
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="control-label" for="field_add2">Address 2</label>
+                    <input type="text" class="form-control" name="add2" id="field_add2"
+                           ng-model="setupCompany.add2"
+                        />
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="control-label" for="field_phone">Phone Number</label>
+                    <input type="text" class="form-control" name="phone" id="field_phone"
+                           ng-model="setupCompany.phone"
+                        />
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="control-label" for="field_mobile">Mobile Number</label>
+                    <input type="text" class="form-control" name="mobile" id="field_mobile"
+                           ng-model="setupCompany.mobile"
+                        />
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="control-label" for="field_fax">Fax Number</label>
+                    <input type="text" class="form-control" name="fax" id="field_fax"
+                           ng-model="setupCompany.fax"
+                        />
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="control-label" for="field_vatregno">Vat Number</label>
+                    <input type="text" class="form-control" name="vatregno" id="field_vatregno"
+                           ng-model="setupCompany.vatregno"
+                        />
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="control-label" for="field_web">Web Address</label>
+                    <input type="text" class="form-control" name="web" id="field_web"
+                           ng-model="setupCompany.web"
+                        />
+                </div>
+                <!--<div class="form-group" ngf-drop ngf-change="setCompanyLogo($file, setupCompany)">-->
+                    <!--<label class="control-label" for="field_companyLogo">Company Logo</label>-->
+                    <!--<div>-->
+                        <!--<div class="help-block clearfix">-->
+                            <!--<span class="pull-left">{{setupCompany.companyLogoContentType}} {{byteSize(setupCompany.companyLogo)}}</span>-->
+                            <!--<button ng-click="setupCompany.companyLogo=null;setupCompany.companyLogoContentType=null;"-->
+                                    <!--ng-if="setupCompany.companyLogo"-->
+                                    <!--class="btn btn-default btn-xs pull-right">-->
+                                <!--<span class="glyphicon glyphicon-remove"></span>-->
+                            <!--</button>-->
+                        <!--</div>-->
+                        <!--<button type="file" ngf-select class="btn btn-default btn-block"-->
+                                <!--ngf-change="setCompanyLogo($file, setupCompany)">-->
+                            <!--Add blob-->
+                        <!--</button>-->
+                    <!--</div>-->
+                    <!--<input type="hidden" class="form-control" name="companyLogo" id="field_companyLogo"-->
+                           <!--ng-model="setupCompany.companyLogo"-->
+                        <!--/>-->
+                    <!--<input type="hidden" class="form-control" name="companyLogoContentType" id="field_companyLogoContentType"-->
+                           <!--ng-model="setupCompany.companyLogoContentType" />-->
+                <!--</div>-->
+                <div class="form-group col-sm-6">
+                    <label class="control-label" for="field_tin">Tin Number</label>
+                    <input type="text" class="form-control" name="tin" id="field_tin"
+                           ng-model="setupCompany.tin"
+                        />
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="control-label" for="field_status">Status</label>-->
+                    <!--<input type="number" class="form-control" name="status" id="field_status"-->
+                           <!--ng-model="setupCompany.status"-->
+                        <!--/>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="control-label" for="field_createdDate">CreatedDate</label>-->
+                    <!--<input id="field_createdDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupCompany.createdDate" is-open="datePickerForCreatedDate.status.opened"-->
+                        <!--/>-->
+            <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="datePickerForCreatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</span>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="control-label" for="field_updatedDate">UpdatedDate</label>-->
+                    <!--<input id="field_updatedDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupCompany.updatedDate" is-open="datePickerForUpdatedDate.status.opened"-->
+                        <!--/>-->
+            <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="datePickerForUpdatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</span>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="control-label" for="field_createdBy">CreatedBy</label>-->
+                    <!--<input type="text" class="form-control" name="createdBy" id="field_createdBy"-->
+                           <!--ng-model="setupCompany.createdBy"-->
+                        <!--/>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="control-label" for="field_updatedBy">UpdatedBy</label>-->
+                    <!--<input type="number" class="form-control" name="updatedBy" id="field_updatedBy"-->
+                           <!--ng-model="setupCompany.updatedBy"-->
+                        <!--/>-->
+                <!--</div>-->
+
+                <!--<div class="form-group">-->
+                    <!--<label for="field_user">user</label>-->
+                    <!--<select class="form-control" id="field_user" name="user" ng-model="setupCompany.user" ng-options="user as user.login for user in users track by user.id">-->
+                        <!--<option value=""></option>-->
+                    <!--</select>-->
+                <!--</div>-->
+                <div class="form-group col-sm-6">
+                    <label for="field_country">country</label>
+                    <select class="form-control" id="field_country" name="country" ng-model="setupCompany.country" ng-options="country as country.name for country in countrys track by country.id">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
                 </button>
             </div>
-            <input type="hidden" class="form-control" name="companyLogo" id="field_companyLogo"
-                    ng-model="setupCompany.companyLogo"
-                     />
-            <input type="hidden" class="form-control" name="companyLogoContentType" id="field_companyLogoContentType"
-                    ng-model="setupCompany.companyLogoContentType" />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_tin">Tin</label>
-            <input type="text" class="form-control" name="tin" id="field_tin"
-                    ng-model="setupCompany.tin"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_status">Status</label>
-            <input type="number" class="form-control" name="status" id="field_status"
-                    ng-model="setupCompany.status"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_createdDate">CreatedDate</label>
-            <input id="field_createdDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupCompany.createdDate" is-open="datePickerForCreatedDate.status.opened"
-            />
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="datePickerForCreatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_updatedDate">UpdatedDate</label>
-            <input id="field_updatedDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupCompany.updatedDate" is-open="datePickerForUpdatedDate.status.opened"
-            />
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="datePickerForUpdatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_createdBy">CreatedBy</label>
-            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                    ng-model="setupCompany.createdBy"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_updatedBy">UpdatedBy</label>
-            <input type="number" class="form-control" name="updatedBy" id="field_updatedBy"
-                    ng-model="setupCompany.updatedBy"
-                     />
-        </div>
+        </form>
 
-        <div class="form-group">
-            <label for="field_user">user</label>
-            <select class="form-control" id="field_user" name="user" ng-model="setupCompany.user" ng-options="user as user.login for user in users track by user.id">
-                <option value=""></option>
-            </select>
-        </div>
+
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
-        </button>
-        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
-        </button>
-    </div>
-</form>
+</div>
+
+

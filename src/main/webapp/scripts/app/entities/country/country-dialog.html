@@ -1,0 +1,138 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myCountryLabel">Create or edit a Country</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="country.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_countryCode">CountryCode</label>
+            <input type="text" class="form-control" name="countryCode" id="field_countryCode"
+                    ng-model="country.countryCode"
+                    ng-maxlength="20" />
+            <div ng-show="editForm.countryCode.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.countryCode.$error.maxlength" translate-value-max="20">
+                    This field cannot be longer than 20 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_isoCode2">IsoCode2</label>
+            <input type="text" class="form-control" name="isoCode2" id="field_isoCode2"
+                    ng-model="country.isoCode2"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.isoCode2.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.isoCode2.$error.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="country.name"
+                    required ng-maxlength="50" />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_continent">Continent</label>
+            <input type="text" class="form-control" name="continent" id="field_continent"
+                    ng-model="country.continent"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.continent.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.continent.$error.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_region">Region</label>
+            <input type="text" class="form-control" name="region" id="field_region"
+                    ng-model="country.region"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.region.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.region.$error.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_surfaceArea">SurfaceArea</label>
+            <input type="text" class="form-control" name="surfaceArea" id="field_surfaceArea"
+                    ng-model="country.surfaceArea"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.surfaceArea.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.surfaceArea.$error.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_capital">Capital</label>
+            <input type="text" class="form-control" name="capital" id="field_capital"
+                    ng-model="country.capital"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.capital.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.capital.$error.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_headOfState">HeadOfState</label>
+            <input type="text" class="form-control" name="headOfState" id="field_headOfState"
+                    ng-model="country.headOfState"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.headOfState.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.headOfState.$error.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_callingCode">CallingCode</label>
+            <input type="text" class="form-control" name="callingCode" id="field_callingCode"
+                    ng-model="country.callingCode"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.callingCode.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.callingCode.$error.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -6,10 +6,11 @@
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150915052646_added_entity_Author.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20161017052646_added_entity_UmsMenuMain.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20161017052646_added_entity_UmsRoleMst.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150916053822_added_entity_Book.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161017052646_added_entity_UmsMenuMain.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161026052105_added_entity_UmsRoleMst.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161026052103_added_entity_Country.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20161026052106_added_entity_SetupCompany.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161021052100_added_entity_SetupEmployee.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20161023052101_added_entity_SetupCompany.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
 </databaseChangeLog>

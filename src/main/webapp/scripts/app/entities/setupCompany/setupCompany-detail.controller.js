@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pmsApp')
-    .controller('SetupCompanyDetailController', function ($scope, $rootScope, $stateParams, DataUtils, entity, SetupCompany, User) {
+    .controller('SetupCompanyDetailController', function ($scope, $rootScope, $stateParams, DataUtils, entity, SetupCompany, User, Country) {
         $scope.setupCompany = entity;
         $scope.load = function (id) {
             SetupCompany.get({id: id}, function(result) {

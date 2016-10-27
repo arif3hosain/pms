@@ -1,0 +1,80 @@
+<div>
+    <h2>List of all country</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <!--<button class="btn btn-primary" ui-sref="country.new">-->
+                    <!--<span class="glyphicon glyphicon-flash"></span> <span>Create a new Country</span>-->
+                <!--</button>-->
+            </div>
+            <div class="col-md-8">
+                <!--<form name="searchForm" class="form-inline">-->
+                    <!--<div class="form-group">-->
+                        <!--<input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="Search Country">-->
+                    <!--</div>-->
+                    <!--<button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Country</span>-->
+                    <!--</button>-->
+                <!--</form>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>Serial No</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Country Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="capital"><span>Capital</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="countryCode"><span>Country Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isoCode2"><span>ISO Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="continent"><span>Continent</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="region"><span>Region</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="surfaceArea"><span>SurfaceArea</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+
+                    <!--<th jh-sort-by="headOfState"><span>HeadOfState</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="callingCode"><span>Calling Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="country in countrys track by country.id">
+                    <td><a ui-sref="country.detail({id:country.id})">{{country.id}}</a></td>
+
+                    <td>{{country.name}}</td>
+                    <td>{{country.capital}}</td>
+                    <td>{{country.countryCode}}</td>
+                    <td>{{country.isoCode2}}</td>
+
+                    <td>{{country.continent}}</td>
+                    <!--<td>{{country.region}}</td>-->
+                    <!--<td>{{country.surfaceArea}}</td>-->
+
+                    <!--<td>{{country.headOfState}}</td>-->
+                    <td>{{country.callingCode}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="country.detail({id:country.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="country.edit({id:country.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="country.delete({id:country.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

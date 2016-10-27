@@ -80,6 +80,10 @@ public class SetupCompany implements Serializable {
     @OneToOne
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private Country country;
+
     public Long getId() {
         return id;
     }
@@ -230,6 +234,14 @@ public class SetupCompany implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     @Override
