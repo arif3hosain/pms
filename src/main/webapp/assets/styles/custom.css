@@ -1,0 +1,124 @@
+body{
+    font-family: 'Lato', sans-serif;
+}
+header{
+	padding: 100px 0px;
+    background: #1D5D66;
+}
+.header_area{
+    text-align: center;
+}
+.logo h2{
+    font-family: 'Yesteryear', cursive;
+    color:#fff;
+    font-size: 75px;
+}
+.logo h2 span{
+    color: #F56F6C;
+}
+.header-text h2{
+    font-family: 'Lato', sans-serif;
+    color:#fff;
+    font-weight: 700;
+    padding: 30px 0px;
+}
+.header-text p{
+
+    color:#F56F6C;
+    padding: 0px 100px;
+    font-size: 16px;
+}
+.signup-btn{
+    margin: 30px 0px ;
+}
+.signup-btn a{
+    margin-bottom: 15px;
+    background: #62B7BB;
+    color:#fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+    transition: all  .2s;
+}
+.login-btn a{
+    background: #62B7BB;
+    color:#fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+    transition: all  .2s;
+}
+.signup-btn a:hover{
+    padding: 10px 22px;
+    background: #F56F6C;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.login-btn a:hover{
+    padding: 10px 22px;
+    background: #fff;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    color:#1D5D66;
+}
+.introduction_area{
+    padding: 100px 0px;
+    background: #F56F6C;
+}
+.intro-text p{
+    font-size: 22px;
+    padding: 30px 0px;
+    color:#fff;
+    font-weight: 500;
+}
+.pro-image img{
+    height: auto;
+    width: 100%;
+    border-radius: 4px;
+}
+.pro-description{
+
+    padding: 30px;
+}
+.pro-description p{
+    font-size: 20px;
+    color:#fff;
+    font-weight: 500;
+    text-align: center
+}
+.service-area{
+     padding-top: 100px;
+    background: #DDEDF3;
+}
+.service-text{
+    text-align: center;
+}
+.service-text p{
+    font-size: 20px;
+    color:#1D5D66;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 30px;
+
+}
+.service-text a{
+    padding: 10px 20px;
+    border:1px solid #F56F6C;
+    color:#1D5D66;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 18px;
+    transition: all .5s;
+}
+.service-text a:hover{
+    border:1px solid #1D5D66;
+    color:#F56F6C;
+}
+.service-image img{
+    height: auto;
+    width: 100%;
+    margin-top: 50px;
+}
