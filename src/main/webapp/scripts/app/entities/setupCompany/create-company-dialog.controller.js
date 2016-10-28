@@ -23,7 +23,11 @@ angular.module('pmsApp').controller('CreateCompany',
             $scope.isSaving = false;
         };
 
+
+
         $scope.save = function () {
+
+
             $scope.isSaving = true;
             if ($scope.setupCompany.id != null) {
                 SetupCompany.update($scope.setupCompany, onSaveSuccess, onSaveError);

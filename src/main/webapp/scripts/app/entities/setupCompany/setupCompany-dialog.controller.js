@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('pmsApp').controller('SetupCompanyDialogController',
-    ['$scope', '$stateParams','$state',  '$q', 'DataUtils',  'SetupCompany', 'User', 'Country','Auth', 'Principal',
-        function($scope, $stateParams,$state,  $q, DataUtils,  SetupCompany, User, Country,Auth, Principal) {
+    ['$scope', '$stateParams','$state',  '$q', 'DataUtils',  'SetupCompany', 'User', 'Country','Auth', 'Principal','GetUserByLogin',
+        function($scope, $stateParams,$state,  $q, DataUtils,  SetupCompany, User, Country,Auth, Principal,GetUserByLogin) {
+$scope.registeredUser=null;
 
 //        $scope.setupCompany = entity;
-        $scope.users = User.query();
-        console.log($scope.users);
+   //     $scope.users = User.query();
+
         $scope.countrys = Country.query({size:500});
         $scope.load = function(id) {
             SetupCompany.get({id : id}, function(result) {
@@ -17,9 +18,8 @@ angular.module('pmsApp').controller('SetupCompanyDialogController',
           Principal.identity().then(function(account) {
                 $scope.account = account;
                 $scope.username=account.login;
-                console.log($scope.username+' into');
+
             });
-            console.log($scope.username+' outto');
 
         var onSaveSuccess = function (result) {
             $scope.$emit('pmsApp:setupCompanyUpdate', result);
@@ -31,13 +31,19 @@ angular.module('pmsApp').controller('SetupCompanyDialogController',
             $scope.isSaving = false;
         };
 
+
+
         $scope.save = function () {
-            $scope.isSaving = true;
-            if ($scope.setupCompany.id != null) {
-                SetupCompany.update($scope.setupCompany, onSaveSuccess, onSaveError);
-            } else {
-                SetupCompany.save($scope.setupCompany, onSaveSuccess, onSaveError);
-            }
+        User.get({login:$scope.username}, function(result, headers){
+                $scope.registeredUser=result;
+                $scope.setupCompany.user=$scope.registeredUser;
+                $scope.isSaving = true;
+                if ($scope.setupCompany.id != null) {
+                    SetupCompany.update($scope.setupCompany, onSaveSuccess, onSaveError);
+                } else {
+                    SetupCompany.save($scope.setupCompany, onSaveSuccess, onSaveError);
+                }
+        });
         };
 
         $scope.clear = function() {
