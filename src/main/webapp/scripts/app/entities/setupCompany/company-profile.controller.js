@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('pmsApp').controller('CompanyProfileController',
-    ['$scope', '$stateParams',  '$q', 'DataUtils',  'SetupCompany', 'User', 'Country','GetCompanyByUserId',
-        function($scope, $stateParams,  $q, DataUtils,  SetupCompany, User, Country,GetCompanyByUserId) {
+    ['$scope', '$stateParams',  '$q', 'DataUtils',  'SetupCompany', 'User', 'Country','GetCompanyByUserId','Auth', 'Principal',
+        function($scope, $stateParams,  $q, DataUtils,  SetupCompany, User, Country,GetCompanyByUserId,Auth, Principal) {
 
 //        $scope.setupCompany = entity;
         $scope.users = User.query();
@@ -12,11 +12,21 @@ angular.module('pmsApp').controller('CompanyProfileController',
                 $scope.setupCompany = result;
             });
         };
-        $scope.setupCompany;
 
-        GetCompanyByUserId.query({id:3 },function(result,headers){
-             $scope.setupCompany=result;
+         $scope.setupCompany;
+         Principal.identity().then(function(account) {
+         User.get({login: account.login}, function(result, headers){
+         console.log(result.id);
+         GetCompanyByUserId.query({id:result.id },function(result,headers){
+                     $scope.setupCompany=result;
+                     console.log(result);
+                });
+         });
+
         });
+
+
+
 
         var onSaveSuccess = function (result) {
             $scope.$emit('pmsApp:setupCompanyUpdate', result);
