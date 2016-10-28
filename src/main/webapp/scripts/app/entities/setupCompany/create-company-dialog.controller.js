@@ -13,6 +13,7 @@ angular.module('pmsApp').controller('CreateCompany',
             });
         };
 
+
         var onSaveSuccess = function (result) {
             $scope.$emit('pmsApp:setupCompanyUpdate', result);
             $uibModalInstance.close(result);
@@ -23,15 +24,12 @@ angular.module('pmsApp').controller('CreateCompany',
             $scope.isSaving = false;
         };
 
-
-
-        $scope.save = function () {
-
-
+        $scope.save  function () {
             $scope.isSaving = true;
             if ($scope.setupCompany.id != null) {
                 SetupCompany.update($scope.setupCompany, onSaveSuccess, onSaveError);
             } else {
+            $scope.setupCompany.status=1;
                 SetupCompany.save($scope.setupCompany, onSaveSuccess, onSaveError);
             }
         };

@@ -6,8 +6,8 @@ angular.module('pmsApp')
             'query': { method: 'GET', isArray: true}
         });
     })
-    .factory('GetUserByLogin', function ($resource) {
-        return $resource('api/users/:login', {}, {
-            'query': { method: 'GET', isArray: true}
+    .factory('GetCompanyByUserId', function ($resource) {
+        return $resource('api/setupCompanys/user/:id', {}, {
+            'query': { method: 'GET', isArray: false}
         });
     });

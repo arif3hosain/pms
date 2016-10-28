@@ -15,4 +15,9 @@ angular.module('pmsApp')
                 'update': { method:'PUT' },
                 'delete':{ method:'DELETE'}
             });
-        });
+        })
+        .factory('GetUsersByCompanyId', function ($resource) {
+          return $resource('api/users/getUserByCompany/:comId', {}, {
+              'query': { method: 'GET', isArray: true}
+          });
+      });

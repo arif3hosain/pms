@@ -6,7 +6,7 @@ angular.module('pmsApp')
         $scope.error = null;
         Principal.identity().then(function(account) {
             $scope.settingsAccount = copyAccount(account);
-
+            console.log($scope.settingsAccount);
         });
 
         $scope.edit=false;
@@ -49,6 +49,7 @@ angular.module('pmsApp')
                 dob:account.dob,
                 gender:account.gender,
                 country:account.country,
+                comId:account.comId
             }
         }
     });

@@ -90,7 +90,7 @@ public class UserService {
             });
     }
 
-    public User createUserInformation(String login, String password, String firstName, String lastName, String email,String mobile,String address1,String address2,String gender,LocalDate dob,String country,
+    public User createUserInformation(String login, String password, String firstName, String lastName, String email,String mobile,String address1,String address2,String gender,Integer comId,LocalDate dob,String country,
         String langKey) {
 
         User newUser = new User();
@@ -108,10 +108,11 @@ public class UserService {
         newUser.setAddress1(address1);
         newUser.setAddress2(address2);
         newUser.setGender(gender);
+        newUser.setComId(comId);
         newUser.setDob(dob);
         newUser.setCountry(country);
         // new user is not active
-        newUser.setActivated(true);
+        newUser.setActivated(false);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
@@ -128,6 +129,7 @@ public class UserService {
         user.setFirstName(managedUserDTO.getFirstName());
         user.setLastName(managedUserDTO.getLastName());
         user.setEmail(managedUserDTO.getEmail());
+        user.setComId(managedUserDTO.getComId());
         if (managedUserDTO.getLangKey() == null) {
             user.setLangKey("en"); // default language is English
         } else {
@@ -151,7 +153,7 @@ public class UserService {
         return user;
     }
 
-    public void updateUserInformation(String firstName, String lastName, String email,String mobile, String address1,String address2,String gender,LocalDate dob,String country,String langKey) {
+    public void updateUserInformation(String firstName, String lastName, String email,String mobile, String address1,String address2,String gender,Integer comId,LocalDate dob,String country,String langKey) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUser().getUsername()).ifPresent(u -> {
             u.setFirstName(firstName);
             u.setLastName(lastName);
@@ -160,6 +162,7 @@ public class UserService {
             u.setAddress1(address1);
             u.setAddress2(address2);
             u.setGender(gender);
+            u.setComId(comId);
             u.setDob(dob);
             u.setCountry(country);
             u.setLangKey(langKey);

@@ -8,11 +8,19 @@ angular.module('pmsApp')
         $scope.errorUserExists = null;
         $scope.registerAccount = {};
         $timeout(function (){angular.element('[ng-model="registerAccount.login"]').focus();});
-
+        $scope.comId;
+//        GetCompanyByUserId.query({id:3},function(result,headers){
+//             $scope.comId;=result.id;
+//             console.log('company id'+3)
+//        });
         $scope.register = function () {
+        $scope.registerAccount.comId=3;
             if ($scope.registerAccount.password !== $scope.confirmPassword) {
+
                 $scope.doNotMatch = 'ERROR';
             } else {
+                console.log('..........');
+                            console.log($scope.registerAccount);
                 $scope.registerAccount.langKey =  'en' ;
                 $scope.doNotMatch = null;
                 $scope.error = null;

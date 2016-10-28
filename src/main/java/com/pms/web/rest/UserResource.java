@@ -179,6 +179,21 @@ public class UserResource {
         return new ResponseEntity<>(managedUserDTOs, headers, HttpStatus.OK);
     }
 
+
+    @RequestMapping(value = "/users/getUserByCompany/{comId}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @Transactional(readOnly = true)
+    public List<User> getAllUsersByCompany(@PathVariable Integer comId){
+        List<User> users=this.userRepository.getUsersByCompanyId(comId);
+        if(users.isEmpty()){
+            return null;
+        }else
+        return users;
+
+    }
+
     /**
      * GET  /users/:login -> get the "login" user.
      */

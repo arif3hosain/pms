@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('pmsApp').controller('SetupCompanyDialogController',
-    ['$scope', '$stateParams','$state',  '$q', 'DataUtils',  'SetupCompany', 'User', 'Country','Auth', 'Principal','GetUserByLogin',
-        function($scope, $stateParams,$state,  $q, DataUtils,  SetupCompany, User, Country,Auth, Principal,GetUserByLogin) {
+    ['$scope', '$stateParams','$state',  '$q', 'DataUtils',  'SetupCompany', 'User', 'Country','Auth', 'Principal',
+        function($scope, $stateParams,$state,  $q, DataUtils,  SetupCompany, User, Country,Auth, Principal) {
 $scope.registeredUser=null;
 
 //        $scope.setupCompany = entity;

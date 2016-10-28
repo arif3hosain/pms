@@ -72,6 +72,7 @@ public class AccountResource {
                         userDTO.getAddress1(),
                         userDTO.getAddress2(),
                         userDTO.getGender(),
+                        userDTO.getComId(),
                         userDTO.getDob(),
                         userDTO.getCountry(),
 
@@ -135,9 +136,6 @@ public class AccountResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<String> saveAccount(@RequestBody UserDTO userDTO) {
-        System.out.println("1>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println(userDTO);
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<");
         Optional<User> existingUser = userRepository.findOneByEmail(userDTO.getEmail());
         if (existingUser.isPresent() && (!existingUser.get().getLogin().equalsIgnoreCase(userDTO.getLogin()))) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("user-management", "emailexists", "Email already in use")).body(null);
@@ -145,10 +143,7 @@ public class AccountResource {
         return userRepository
             .findOneByLogin(SecurityUtils.getCurrentUser().getUsername())
             .map(u -> {
-                System.out.println("2>>>>>>>>>>>>>>>>>>>>>>>>");
-                System.out.println(userDTO);
-                System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<");
-                userService.updateUserInformation(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail(),userDTO.getMobile(),userDTO.getAddress1(),userDTO.getAddress2(),userDTO.getGender(),userDTO.getDob(),userDTO.getCountry(),
+                userService.updateUserInformation(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail(),userDTO.getMobile(),userDTO.getAddress1(),userDTO.getAddress2(),userDTO.getGender(),userDTO.getComId(),userDTO.getDob(),userDTO.getCountry(),
                     userDTO.getLangKey());
                 return new ResponseEntity<String>(HttpStatus.OK);
             })

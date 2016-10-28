@@ -66,6 +66,22 @@ angular.module('pmsApp')
                 resolve: {
                 }
             })
+            .state('setupCompany.memberList', {
+                parent: 'setupCompany',
+                url: '/memberlist',
+                data: {
+                    authorities: ['ROLE_USER'],
+                    pageTitle: 'Company Profile'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/entities/setupCompany/member-list.html',
+                        controller: 'MemberListController'
+                    }
+                },
+                resolve: {
+                }
+            })
             .state('setupCompany.detail', {
                 parent: 'entity',
                 url: '/setupCompany/{id}',

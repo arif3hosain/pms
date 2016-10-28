@@ -117,6 +117,7 @@ public class AccountResourceIntTest {
         user.setFirstName("john");
         user.setLastName("doe");
         user.setEmail("john.doe@jhipter.com");
+        user.setComId(12);
         user.setAuthorities(authorities);
         when(mockUserService.getUserWithAuthorities()).thenReturn(user);
 
@@ -153,6 +154,7 @@ public class AccountResourceIntTest {
             "address1",      // e-mail
             "address2",      // e-mail
             "gender",      // e-mail
+            12,
             null,      // e-mail
             "country",      // e-mail
             true,                   // activated
@@ -183,6 +185,7 @@ public class AccountResourceIntTest {
             "address1",      // e-mail
             "address2",      // e-mail
             "gender",      // e-mail
+            12,
             null,      // e-mail
             "country",      // e-mail
             true,                   // activated
@@ -213,6 +216,7 @@ public class AccountResourceIntTest {
             "address1",      // e-mail
             "address2",      // e-mail
             "gender",      // e-mail
+            12,
             null,      // e-mail
             "country",      // e-mail
             true,               // activated
@@ -244,6 +248,7 @@ public class AccountResourceIntTest {
             "address1",      // e-mail
             "address2",      // e-mail
             "gender",      // e-mail
+            12,
             null,      // e-mail
             "country",      // e-mail
             true,                   // activated
@@ -253,7 +258,7 @@ public class AccountResourceIntTest {
 
         // Duplicate login, different e-mail
         UserDTO dup = new UserDTO(u.getLogin(), u.getPassword(), u.getLogin(), u.getLastName(),
-            "alicejr@example.com",u.getMobile(),u.getAddress1(),u.getAddress2(),u.getGender(),u.getDob(),u.getCountry(), true, u.getLangKey(), u.getAuthorities());
+            "alicejr@example.com",u.getMobile(),u.getAddress1(),u.getAddress2(),u.getGender(),u.getComId(),u.getDob(),u.getCountry(), true, u.getLangKey(), u.getAuthorities());
 
         // Good user
         restMvc.perform(
@@ -287,6 +292,7 @@ public class AccountResourceIntTest {
             "address1",      // e-mail
             "address2",      // e-mail
             "gender",      // e-mail
+            12,
             null,      // e-mail
             "country",      // e-mail
             true,                   // activated
@@ -296,7 +302,7 @@ public class AccountResourceIntTest {
 
         // Duplicate e-mail, different login
         UserDTO dup = new UserDTO("johnjr", u.getPassword(), u.getLogin(), u.getLastName(),
-            u.getEmail(),u.getMobile(),u.getAddress1(),u.getAddress2(),u.getGender(),u.getDob(),u.getCountry(), true, u.getLangKey(), u.getAuthorities());
+            u.getEmail(),u.getMobile(),u.getAddress1(),u.getAddress2(),u.getGender(),u.getComId(),u.getDob(),u.getCountry(), true, u.getLangKey(), u.getAuthorities());
 
         // Good user
         restMvc.perform(
@@ -329,6 +335,7 @@ public class AccountResourceIntTest {
             "address1",      // e-mail
             "address2",      // e-mail
             "gender",      // e-mail
+            12,
             null,      // e-mail
             "country",      // e-mail
             true,                   // activated

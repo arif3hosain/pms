@@ -73,6 +73,7 @@ public class UserServiceIntTest {
         User user = userService.createUserInformation("johndoe", "johndoe", "John", "Doe", "john.doe@localhost","01754282387", "address1",      // e-mail
             "address2",      // e-mail
             "gender",      // e-mail
+            12,
             null,      // e-mail
             "country",       "en-US");
         Optional<User> maybeUser = userService.requestPasswordReset("john.doe@localhost");
@@ -85,6 +86,7 @@ public class UserServiceIntTest {
         User user = userService.createUserInformation("johndoe", "johndoe", "John", "Doe", "john.doe@localhost","01754282387",  "address1",      // e-mail
             "address2",      // e-mail
             "gender",      // e-mail
+            12,
             null,      // e-mail
             "country",      "en-US");
 
@@ -108,6 +110,7 @@ public class UserServiceIntTest {
         User user = userService.createUserInformation("johndoe", "johndoe", "John", "Doe", "john.doe@localhost","01754282387", "address1",      // e-mail
             "address2",      // e-mail
             "gender",      // e-mail
+            12,
             null,      // e-mail
             "country","en-US");
 
@@ -126,6 +129,7 @@ public class UserServiceIntTest {
         User user = userService.createUserInformation("johndoe", "johndoe", "John", "Doe", "john.doe@localhost","01754282387", "address1",      // e-mail
             "address2",      // e-mail
             "gender",      // e-mail
+            12,
             null,      // e-mail
             "country",       "en-US");
         String oldPassword = user.getPassword();

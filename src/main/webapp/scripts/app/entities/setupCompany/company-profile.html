@@ -4,12 +4,12 @@
     </div>
     <div class="col-md-9">
         <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Field</th>
-                <th>Value</th>
-            </tr>
-            </thead>
+            <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>Field</th>-->
+                <!--<th>Value</th>-->
+            <!--</tr>-->
+            <!--</thead>-->
             <tbody>
             <tr>
                 <td>
@@ -83,15 +83,15 @@
                     <span class="form-control-static">{{setupCompany.web}}</span>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <span>Company Logo</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{setupCompany.companyLogo}}</span>
-                    <div>{{setupCompany.companyLogoContentType}}  {{byteSize(setupCompany.companyLogo)}}</div>
-                </td>
-            </tr>
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>Company Logo</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupCompany.companyLogo}}</span>-->
+                    <!--<div>{{setupCompany.companyLogoContentType}}  {{byteSize(setupCompany.companyLogo)}}</div>-->
+                <!--</td>-->
+            <!--</tr>-->
             <!--<tr>-->
                 <!--<td>-->
                     <!--<span>Tin Number</span>-->
@@ -105,12 +105,13 @@
                     <span>Active Status</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{setupCompany.status}}</span>
+                    <span ng-if="setupCompany.status==1" class="form-control-static">Active</span>
+                    <span ng-if="setupCompany.status!=1" class="form-control-static">Inactive</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>country</span>
+                    <span>Country/Location</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="country.detail({id:setupCompany.country.id})">{{setupCompany.country.name}}</a>

@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class SetupCompanyResource {
 
     private final Logger log = LoggerFactory.getLogger(SetupCompanyResource.class);
-        
+
     @Inject
     private SetupCompanyRepository setupCompanyRepository;
-    
+
     @Inject
     private SetupCompanySearchRepository setupCompanySearchRepository;
-    
+
     /**
      * POST  /setupCompanys -> Create a new setupCompany.
      */
@@ -54,7 +54,9 @@ public class SetupCompanyResource {
         if (setupCompany.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("setupCompany", "idexists", "A new setupCompany cannot already have an ID")).body(null);
         }
-        SetupCompany result = setupCompanyRepository.save(setupCompany);
+        SetupCompany company=setupCompany;
+        company.setStatus(1);
+        SetupCompany result = setupCompanyRepository.save(company);
         setupCompanySearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/setupCompanys/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("setupCompany", result.getId().toString()))
@@ -90,7 +92,7 @@ public class SetupCompanyResource {
     public ResponseEntity<List<SetupCompany>> getAllSetupCompanys(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of SetupCompanys");
-        Page<SetupCompany> page = setupCompanyRepository.findAll(pageable); 
+        Page<SetupCompany> page = setupCompanyRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/setupCompanys");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -139,5 +141,20 @@ public class SetupCompanyResource {
         return StreamSupport
             .stream(setupCompanySearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
+    }
+
+    @RequestMapping(value = "/setupCompanys/user/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public SetupCompany getCompanyByUserId(@PathVariable Integer id) {
+        log.debug("REST request to search SetupCompanys for query {}", id);
+        long l=id;
+        SetupCompany setupCompany=this.setupCompanyRepository.getCompany(l);
+        System.out.println("output>>>>>>>>>>>>>>>>>>>>>>>>>"+setupCompany);
+            if(setupCompany ==null){
+                return null;
+            }
+            return setupCompany;
     }
 }

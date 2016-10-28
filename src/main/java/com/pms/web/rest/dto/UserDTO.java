@@ -44,6 +44,11 @@ public class UserDTO {
     private String country;
     private LocalDate dob;
     private String gender;
+    private Integer comId;
+
+    public Integer getComId() {
+        return comId;
+    }
 
     public String getAddress1() {
         return address1;
@@ -84,6 +89,7 @@ public class UserDTO {
             user.getAddress1(),
             user.getAddress2(),
             user.getGender(),
+            user.getComId(),
             user.getDob(),
             user.getCountry(),
             user.getActivated(),
@@ -93,7 +99,7 @@ public class UserDTO {
     }
 
     public UserDTO(String login, String password, String firstName, String lastName,
-        String email,String mobile,String address1,String address2,String gender,LocalDate dob,String country, boolean activated, String langKey, Set<String> authorities) {
+        String email,String mobile,String address1,String address2,String gender,Integer comId,LocalDate dob,String country, boolean activated, String langKey, Set<String> authorities) {
 
         this.login = login;
         this.password = password;
@@ -104,6 +110,7 @@ public class UserDTO {
         this.address1=address1;
         this.address2=address2;
         this.gender=gender;
+        this.comId=comId;
         this.dob=dob;
         this.country=country;
         this.activated = activated;

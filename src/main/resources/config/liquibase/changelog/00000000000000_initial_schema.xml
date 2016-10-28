@@ -59,6 +59,9 @@
             <column name="gender" type="varchar(10)">
                 <constraints nullable="true"/>
             </column>
+            <column name="com_id" type="integer">
+                <constraints nullable="true"/>
+            </column>
             <column name="dob" type="date">
                 <constraints nullable="true"/>
             </column>

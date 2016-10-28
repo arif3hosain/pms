@@ -63,7 +63,17 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "gender")
     private String gender;
 
-//    @Column(name = "request_for")
+    @Column(name = "com_id", nullable = true)
+    private Integer comId;
+
+    public Integer getComId() {
+        return comId;
+    }
+
+    public void setComId(Integer comId) {
+        this.comId = comId;
+    }
+    //    @Column(name = "request_for")
 //    private String requestFor;
 
     @Column(name = "country")
@@ -307,6 +317,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", dob='" + dob + '\'' +
             ", country='" + country + '\'' +
             ", gender='" + gender + '\'' +
+            ", com id='" + comId + '\'' +
             ", activated='" + activated + '\'' +
             ", langKey='" + langKey + '\'' +
             ", activationKey='" + activationKey + '\'' +
