@@ -8,7 +8,7 @@ angular.module('pmsApp')
                 url: '/setupCompanys',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'SetupCompanys'
+                    pageTitle: 'List of companies'
                 },
                 views: {
                     'content@': {
@@ -24,7 +24,7 @@ angular.module('pmsApp')
                 url: '/add',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'SetupCompanys'
+                    pageTitle: 'Welcome to new company setup'
                 },
                 views: {
                     'content@': {
@@ -40,7 +40,7 @@ angular.module('pmsApp')
                 url: '/createMember',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'SetupCompanys'
+                    pageTitle: 'Create company member who will done work'
                 },
                 views: {
                     'content@': {
@@ -87,7 +87,7 @@ angular.module('pmsApp')
                 url: '/setupCompany/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'SetupCompany'
+                    pageTitle: 'Company Detail Information'
                 },
                 views: {
                     'content@': {
