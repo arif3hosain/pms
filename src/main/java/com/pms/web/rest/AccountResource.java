@@ -129,7 +129,7 @@ public class AccountResource {
     }
 
     /**
-     * POST  /account -> update the current user information.
+     * POST  /account -> update the current user information.z
      */
     @RequestMapping(value = "/account",
         method = RequestMethod.POST,

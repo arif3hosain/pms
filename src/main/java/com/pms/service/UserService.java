@@ -95,6 +95,7 @@ public class UserService {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne("ROLE_USER");
+        Authority authority2 = authorityRepository.findOne("ROLE_SUPER_ADMIN");
         Set<Authority> authorities = new HashSet<>();
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(login);
@@ -116,6 +117,7 @@ public class UserService {
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
+        authorities.add(authority2);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
         userSearchRepository.save(newUser);

@@ -18,7 +18,7 @@
                     <!--</a>-->
                 <!--</li>-->
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-                <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
+                <li has-authority="ROLE_ADMIN" ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                         <span>
                             <span class="glyphicon glyphicon-th-list"></span>
@@ -28,7 +28,7 @@
                             <b class="caret"></b>
                         </span>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul   class="dropdown-menu">
                         <!--<li ui-sref-active="active" ><a ui-sref="author" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>-->
                         <!--&#xA0;<span >Author</span></a></li>-->
                         <li ui-sref-active="active" ><a ui-sref="setupCompany" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
@@ -42,11 +42,11 @@
                         <li ui-sref-active="active" ><a ui-sref="setupEmployee" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
                         &#xA0;<span >Setup Employee</span></a></li>
                         <li ui-sref-active="active" ><a ui-sref="setupCompany" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >setupCompany</span></a></li>
+                        &#xA0;<span >Setup Company</span></a></li>
                         <li ui-sref-active="active" ><a ui-sref="umsRoleMst" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >umsRoleMst</span></a></li>
+                        &#xA0;<span >Role Setup</span></a></li>
                         <li ui-sref-active="active" ><a ui-sref="country" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >country</span></a></li>
+                        &#xA0;<span >Country</span></a></li>
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                     </ul>
                 </li>

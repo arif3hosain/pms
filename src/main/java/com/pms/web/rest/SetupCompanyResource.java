@@ -1,9 +1,14 @@
 package com.pms.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.pms.domain.Authority;
 import com.pms.domain.SetupCompany;
+import com.pms.domain.User;
+import com.pms.repository.AuthorityRepository;
 import com.pms.repository.SetupCompanyRepository;
+import com.pms.repository.UserRepository;
 import com.pms.repository.search.SetupCompanySearchRepository;
+import com.pms.service.UserService;
 import com.pms.web.rest.util.HeaderUtil;
 import com.pms.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -20,8 +25,10 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -42,6 +49,14 @@ public class SetupCompanyResource {
     @Inject
     private SetupCompanySearchRepository setupCompanySearchRepository;
 
+    @Inject
+    private AuthorityRepository authorityRepository;
+
+    @Inject
+    private UserRepository userRepository;
+
+    @Inject
+    private UserService userService;
     /**
      * POST  /setupCompanys -> Create a new setupCompany.
      */
@@ -56,8 +71,22 @@ public class SetupCompanyResource {
         }
         SetupCompany company=setupCompany;
         company.setStatus(1);
+//        Optional<User> existingUser = userRepository.findOneById(company.getUser().getId());
+//        Authority authority2 = authorityRepository.findOne("ROLE_SUPER_ADMIN");
+//        Set<Authority> authorities = new HashSet<>();
+//        authorities.add(authority2);
+//        userService.updateUserInformation(existingUser.g, existingUser.getLastName(), existingUser.getEmail(),existingUser.getMobile(),existingUser.getAddress1(),existingUser.getAddress2(),existingUser.getGender(),existingUser.getComId(),existingUser.getDob(),existingUser.getCountry(),
+//            existingUser.getLangKey());
+
         SetupCompany result = setupCompanyRepository.save(company);
         setupCompanySearchRepository.save(result);
+        System.out.println("company Id:>>>>>>>>>>>>>>>>>>>."+company.getUser().getId());
+        System.out.println("company Id: >>>>>>>>>>>>>>>>>>>>" + result.getUser().getId());
+
+
+
+
+
         return ResponseEntity.created(new URI("/api/setupCompanys/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("setupCompany", result.getId().toString()))
             .body(result);
