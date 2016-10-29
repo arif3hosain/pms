@@ -46,6 +46,7 @@ $scope.registeredUser=null;
         });
         };
 
+
         $scope.clear = function() {
             $uibModalInstance.dismiss('cancel');
         };
