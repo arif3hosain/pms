@@ -1,0 +1,88 @@
+<div>
+    <!--<h2>SetupClients</h2>-->
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="setupClient.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Add Client</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="Search">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <!--<th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="website"><span>Web Address</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="industryName"><span>Industry Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="clientType"><span>Client Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="custVatChalCode"><span>CustVatChalCode</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="custVatRegNo"><span>CustVatRegNo</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="createdDate"><span>CreatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="updatedDate"><span>UpdatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="createdBy"><span>CreatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="updatedBy"><span>UpdatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="setupCompany.name"><span>Setup Company</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="country.name"><span>Country Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="setupClient in setupClients track by setupClient.id">
+                    <td><a ui-sref="setupClient.detail({id:setupClient.id})">{{setupClient.id}}</a></td>
+                    <td>{{setupClient.name}}</td>
+                    <td>{{setupClient.website}}</td>
+                    <td>{{setupClient.industryName}}</td>
+                    <td translate="{{'pmsApp.ClientType.' + setupClient.clientType}}">{{setupClient.clientType}}</td>
+                    <!--<td>{{setupClient.custVatChalCode}}</td>-->
+                    <!--<td>{{setupClient.custVatRegNo}}</td>-->
+                    <!--<td>{{setupClient.status}}</td>-->
+                        <!--<td>{{setupClient.createdDate | date:'mediumDate'}}</td>-->
+                        <!--<td>{{setupClient.updatedDate | date:'mediumDate'}}</td>-->
+                    <!--<td>{{setupClient.createdBy}}</td>-->
+                    <!--<td>{{setupClient.updatedBy}}</td>-->
+                    <td>
+                        <a ui-sref="setupCompany.detail({id:setupClient.setupCompany.id})">{{setupClient.setupCompany.name}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="country.detail({id:setupClient.country.id})">{{setupClient.country.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="setupClient.detail({id:setupClient.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="setupClient.edit({id:setupClient.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="setupClient.delete({id:setupClient.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <!--<uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>-->
+    </div>
+</div>

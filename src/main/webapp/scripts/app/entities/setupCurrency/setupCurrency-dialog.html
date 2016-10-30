@@ -1,0 +1,106 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="mySetupCurrencyLabel">Add Currency</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <!--<div class="form-group">-->
+            <!--<label for="id">ID</label>-->
+            <!--<input type="text" class="form-control" id="id" name="id"-->
+                    <!--ng-model="setupCurrency.id" readonly />-->
+        <!--</div>-->
+        <div class="form-group">
+            <label class="control-label" for="field_curCode">Currency Code</label>
+            <input type="text" class="form-control" name="curCode" id="field_curCode"
+                    ng-model="setupCurrency.curCode"
+                    required ng-maxlength="100" />
+            <div ng-show="editForm.curCode.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.curCode.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.curCode.$error.maxlength" translate-value-max="100">
+                    This field cannot be longer than 100 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_currencyName">Currency Name</label>
+            <input type="text" class="form-control" name="currencyName" id="field_currencyName"
+                    ng-model="setupCurrency.currencyName"
+                    required />
+            <div ng-show="editForm.currencyName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.currencyName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_currSymbol">Currency Symbol</label>
+            <input type="text" class="form-control" name="currSymbol" id="field_currSymbol"
+                    ng-model="setupCurrency.currSymbol"
+                     />
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_symbol">Symbol</label>-->
+            <!--<input type="text" class="form-control" name="symbol" id="field_symbol"-->
+                    <!--ng-model="setupCurrency.symbol"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_status">Status</label>-->
+            <!--<input type="number" class="form-control" name="status" id="field_status"-->
+                    <!--ng-model="setupCurrency.status"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_createdDate">CreatedDate</label>-->
+            <!--<input id="field_createdDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupCurrency.createdDate" is-open="datePickerForCreatedDate.status.opened"-->
+            <!--/>-->
+            <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="datePickerForCreatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_updatedDate">UpdatedDate</label>-->
+            <!--<input id="field_updatedDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupCurrency.updatedDate" is-open="datePickerForUpdatedDate.status.opened"-->
+            <!--/>-->
+            <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="datePickerForUpdatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_createdBy">CreatedBy</label>-->
+            <!--<input type="text" class="form-control" name="createdBy" id="field_createdBy"-->
+                    <!--ng-model="setupCurrency.createdBy"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_updatedBy">UpdatedBy</label>-->
+            <!--<input type="number" class="form-control" name="updatedBy" id="field_updatedBy"-->
+                    <!--ng-model="setupCurrency.updatedBy"-->
+                     <!--/>-->
+        <!--</div>-->
+
+        <div class="form-group">
+            <label for="field_country">Select Country</label>
+            <select class="form-control" id="field_country" name="country" ng-model="setupCurrency.country" ng-options="country as country.name for country in countrys track by country.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

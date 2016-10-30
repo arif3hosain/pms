@@ -1,0 +1,126 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 ng-if="!setupClient.id" class="modal-title" id="mySetupClientLabel">Create New Client</h4>
+        <h4 ng-if="setupClient.id" class="modal-title" id="mySetupClientLabel">Update Client</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <!--<div class="form-group">-->
+            <!--<label for="id">ID</label>-->
+            <!--<input type="text" class="form-control" id="id" name="id"-->
+                    <!--ng-model="setupClient.id" readonly />-->
+        <!--</div>-->
+        <div class="form-group">
+            <label class="control-label" for="field_name">Client Name/Organization Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="setupClient.name"
+                    required ng-maxlength="100" />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.maxlength" translate-value-max="100">
+                    This field cannot be longer than 100 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_website">Web Address</label>
+            <input type="text" class="form-control" name="website" id="field_website"
+                    ng-model="setupClient.website" placeholder="https://www.example.com"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_industryName">Industry Name</label>
+            <input type="text" class="form-control" name="industryName" id="field_industryName"
+                    ng-model="setupClient.industryName"
+                    required />
+            <div ng-show="editForm.industryName.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.industryName.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_clientType">Client Type</label>
+            <select class="form-control" name="clientType" ng-model="setupClient.clientType" id="field_clientType">
+                <option value="New">New</option>
+                <option value="Existing">Existing</option>
+            </select>
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_custVatChalCode">CustVatChalCode</label>-->
+            <!--<input type="text" class="form-control" name="custVatChalCode" id="field_custVatChalCode"-->
+                    <!--ng-model="setupClient.custVatChalCode"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_custVatRegNo">CustVatRegNo</label>-->
+            <!--<input type="text" class="form-control" name="custVatRegNo" id="field_custVatRegNo"-->
+                    <!--ng-model="setupClient.custVatRegNo"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_status">Status</label>-->
+            <!--<input type="number" class="form-control" name="status" id="field_status"-->
+                    <!--ng-model="setupClient.status"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_createdDate">CreatedDate</label>-->
+            <!--<input id="field_createdDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupClient.createdDate" is-open="datePickerForCreatedDate.status.opened"-->
+            <!--/>-->
+            <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="datePickerForCreatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_updatedDate">UpdatedDate</label>-->
+            <!--<input id="field_updatedDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="setupClient.updatedDate" is-open="datePickerForUpdatedDate.status.opened"-->
+            <!--/>-->
+            <!--<span class="input-group-btn">-->
+                <!--<button type="button" class="btn btn-default" ng-click="datePickerForUpdatedDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</span>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_createdBy">CreatedBy</label>-->
+            <!--<input type="text" class="form-control" name="createdBy" id="field_createdBy"-->
+                    <!--ng-model="setupClient.createdBy"-->
+                     <!--/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" for="field_updatedBy">UpdatedBy</label>-->
+            <!--<input type="number" class="form-control" name="updatedBy" id="field_updatedBy"-->
+                    <!--ng-model="setupClient.updatedBy"-->
+                     <!--/>-->
+        <!--</div>-->
+
+        <div class="form-group">
+            <label for="field_setupCompany">Setup Company</label>
+            <select class="form-control" id="field_setupCompany" name="setupCompany" ng-model="setupClient.setupCompany" ng-options="setupCompany as setupCompany.name for setupCompany in setupcompanys track by setupCompany.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_country">Select Country</label>
+            <select class="form-control" id="field_country" name="country" ng-model="setupClient.country" ng-options="country as country.name for country in countrys track by country.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

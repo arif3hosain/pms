@@ -1,0 +1,126 @@
+
+<div>
+    <h2><span>SetupClient</span> {{setupClient.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Client Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupClient.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Web Address</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupClient.website}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Industry Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{setupClient.industryName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Client Type</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'pmsApp.ClientType.' + setupClient.clientType}}">{{setupClient.clientType}}</span>
+                </td>
+            </tr>
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>CustVatChalCode</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupClient.custVatChalCode}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>CustVatRegNo</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupClient.custVatRegNo}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>Status</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupClient.status}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>CreatedDate</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupClient.createdDate | date:'mediumDate'}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>UpdatedDate</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupClient.updatedDate | date:'mediumDate'}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>CreatedBy</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupClient.createdBy}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>-->
+                    <!--<span>UpdatedBy</span>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<span class="form-control-static">{{setupClient.updatedBy}}</span>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <tr>
+                <td>
+                    <span>Setup Company</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="setupCompany.detail({id:setupClient.setupCompany.id})">{{setupClient.setupCompany.name}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Country Name</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="country.detail({id:setupClient.country.id})">{{setupClient.country.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

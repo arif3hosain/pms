@@ -1,0 +1,87 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "setupCompany",
+            "otherEntityName": "setupCompany",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "country",
+            "otherEntityName": "country",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "website",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "industryName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "clientType",
+            "fieldType": "ClientType",
+            "fieldValues": "New, Existing"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "custVatChalCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "custVatRegNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "updatedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "updatedBy",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20161030052108",
+    "dto": "no",
+    "pagination": "pagination"
+}

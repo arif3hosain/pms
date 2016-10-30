@@ -1,0 +1,69 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "country",
+            "otherEntityName": "country",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "curCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "currencyName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "currSymbol",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "symbol",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "updatedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "updatedBy",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20161030052107",
+    "dto": "no",
+    "pagination": "pagination"
+}

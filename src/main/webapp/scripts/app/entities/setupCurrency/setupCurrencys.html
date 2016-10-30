@@ -1,0 +1,80 @@
+<div>
+    <!--<h2>SetupCurrencys</h2>-->
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="setupCurrency.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Add Currency</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="Search currency">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <!--<th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="curCode"><span>Currency Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="currencyName"><span>Currency Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="currSymbol"><span>Currency Symbol</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--<th jh-sort-by="symbol"><span>Symbol</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="createdDate"><span>CreatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="updatedDate"><span>UpdatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="createdBy"><span>CreatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <!--<th jh-sort-by="updatedBy"><span>UpdatedBy</span> <span class="glyphicon glyphicon-sort"></span></th>-->
+                    <th jh-sort-by="country.name"><span>Country Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="setupCurrency in setupCurrencys track by setupCurrency.id">
+                    <td><a ui-sref="setupCurrency.detail({id:setupCurrency.id})">{{setupCurrency.id}}</a></td>
+                    <td>{{setupCurrency.curCode}}</td>
+                    <td>{{setupCurrency.currencyName}}</td>
+                    <td>{{setupCurrency.currSymbol}}</td>
+                    <td>{{setupCurrency.symbol}}</td>
+                    <!--<td>{{setupCurrency.status}}</td>-->
+                        <!--<td>{{setupCurrency.createdDate | date:'mediumDate'}}</td>-->
+                        <!--<td>{{setupCurrency.updatedDate | date:'mediumDate'}}</td>-->
+                    <!--<td>{{setupCurrency.createdBy}}</td>-->
+                    <!--<td>{{setupCurrency.updatedBy}}</td>-->
+                    <td>
+                        <a ui-sref="country.detail({id:setupCurrency.country.id})">{{setupCurrency.country.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="setupCurrency.detail({id:setupCurrency.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="setupCurrency.edit({id:setupCurrency.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="setupCurrency.delete({id:setupCurrency.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <!--<uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>-->
+    </div>
+</div>
